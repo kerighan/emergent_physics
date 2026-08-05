@@ -58,7 +58,7 @@ Nous ne supposerons aucune de ces réponses. Nous allons les découvrir — ou d
 
 ## Le nom de la chose
 
-La structure que nous venons de décrire — des points, et pour chaque point la seule donnée de ses voisins — porte un nom en mathématiques : c'est un **graphe**. Un ensemble de sommets $V$, et un ensemble d'arêtes $E$ qui disent quels sommets sont voisins. Rien de plus : pas de longueur d'arête, pas de position des sommets, pas d'orientation privilégiée.
+La structure que nous venons de décrire — des points, et pour chaque point la seule donnée de ses voisins — porte un nom en mathématiques : c'est un **graphe**. Un ensemble de sommets $`V`$, et un ensemble d'arêtes $`E`$ qui disent quels sommets sont voisins. Rien de plus : pas de longueur d'arête, pas de position des sommets, pas d'orientation privilégiée.
 
 Nous avons introduit l'idée avant le mot, et c'est délibéré. Ce livre n'est pas un cours sur la théorie des graphes ; c'est une tentative de faire naître la physique à partir du strict minimum. Le graphe n'est que le décor le plus pauvre que nous ayons su imaginer. Toute la question est de savoir ce qu'on peut y bâtir.
 
