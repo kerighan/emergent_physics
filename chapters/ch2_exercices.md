@@ -1,168 +1,64 @@
-# Chapitre II — Exercices : Peut-on déplacer un objet ?
+# Chapitre II — Exercices : peut-on déplacer un objet ?
 
-> **Objectif** : Comprendre pourquoi la dynamique de diffusion $u(t+1) = u(t) - \varepsilon L u(t)$ ne permet pas de déplacer un objet, et pourquoi il faut introduire de la mémoire. Tous les exercices sont conçus pour être résolus **à la main**, sauf mention contraire.
+On travaille d’abord sur la chaîne infinie Z, avec $(Lu)_n=2u_n-u_{n-1}-u_{n+1}$ et $u_n(t+1)=u_n(t)-ε(Lu(t))_n$. Les champs considérés sont à support fini au départ ; cela justifie les sommes utilisées.
 
----
+## 1. Le premier pas : diffusion ou translation ?
 
-## series 1 : Calcul direct de la dynamique de diffusion
+On prend $ε=1/2$ et $u_{-1}(0)=1$, $u_0(0)=2$, $u_1(0)=1$, les autres valeurs étant nulles.
 
-### Exercice 2.1 ★ (Départ)
-**Premier pas de diffusion sur une chaîne**
+1. Calculer le profil à $t=1$, puis à $t=2$.
+2. Comparer la hauteur maximale et le nombre de sommets non nuls aux deux instants.
+3. Le profil s’est-il déplacé, ou s’est-il étalé ? Donner un critère précis qui distingue ces deux phénomènes.
 
-Sur la chaîne $\mathbb{Z}$, avec $\varepsilon = \frac{1}{2}$, la règle devient $u_n(t+1) = \frac{u_{n-1}(t) + u_{n+1}(t)}{2}$.
+## 2. Une quantité conservée, mais pas un objet conservé
 
-Soit la bosse symétrique initiale :
-$u_{-1}(0) = 1, u_0(0) = 2, u_1(0) = 1$, et $u_n(0) = 0$ ailleurs.
+Montrer que, pour tout $ε$ et tout champ à support fini, $S(t)=Σ_{n∈Z}u_n(t)$ est constant.
 
-1. Calculer $u_n(1)$ pour $n = -2, -1, 0, 1, 2$.
-2. Vérifier que $\sum_n u_n(1) = \sum_n u_n(0)$.
-3. Où se situe le maximum à $t=1$ ? Commenter.
+1. Faire la preuve en développant les sommes, sans invoquer seulement la notation matricielle.
+2. Cette conservation interdit-elle l’étalement ? Tester la question sur l’exercice 1.
+3. Donner deux champs différents ayant la même somme, mais des profils très différents.
 
----
+## 3. Le barycentre : ce qui reste immobile
 
-### Exercice 2.2 ★
-**Conservation de la somme**
+Supposer maintenant $S(t)≠0$ et définir $X(t)=Σ_n n u_n(t)/S(t)$.
 
-Montrer que pour **n'importe quel graphe** et **n'importe quel champ**, la dynamique
-$$u_v(t+1) = u_v(t) - \varepsilon (\mathcal{L}u(t))_v$$
-conserve la somme totale $S(t) = \sum_v u_v(t)$. 
+1. Montrer que $X(t+1)=X(t)$ pour la dynamique de diffusion sur Z.
+2. Calculer $X(0)$ et $X(1)$ pour le profil $u_{-1}=1,u_0=2,u_1=3$.
+3. Expliquer pourquoi ce résultat ne signifie pas que chaque morceau du profil reste en place.
+4. Quelles hypothèses faut-il mentionner pour que la preuve soit légitime sur Z ?
 
-**Indice** : Utiliser le fait que $\sum_v (\mathcal{L}u)_v = 0$ (somme des lignes de $L$ est nulle).
+## 4. Symétrie et fausse conclusion
 
----
+Soit un champ initial pair : $u_{-n}(0)=u_n(0)$.
 
-### Exercice 2.3 ★★
-**Deux pas de diffusion**
+1. Montrer par récurrence que le champ reste pair à tout instant.
+2. En déduire que son barycentre est nul lorsqu’il est défini.
+3. Construire un champ initial non pair dont le barycentre reste pourtant constant.
+4. Formuler correctement la conclusion du chapitre : que peut-on établir exactement, et que ne peut-on pas établir, à propos du mouvement ?
 
-Reprendre la bosse de l'exercice 2.1.
+## 5. Propagation de l’influence
 
-1. Calculer $u_n(2)$ pour $n = -2, -1, 0, 1, 2$.
-2. Tracer l'évolution du maximum et de la largeur de la bosse.
-3. Que devient la bosse au bout de plusieurs pas ? (Répondre qualitativement)
+Partir de $u_0(0)=1$ et $u_n(0)=0$ pour $n≠0$, avec $ε=1/2$.
 
----
+1. Calculer les profils pour $t=1,2,3$.
+2. Montrer par récurrence que $u_n(t)=0$ si $|n|>t$.
+3. Cette propriété est-elle une vitesse de déplacement de l’objet, une vitesse de propagation de l’influence, ou les deux ? Justifier.
+4. Pourquoi le maximum du profil ne constitue-t-il pas nécessairement un objet qui se déplace ?
 
-## series 2 : Le barycentre, révélateur de l'échec
+## 6. La mémoire comme test minimal
 
-### Exercice 2.4 ★★
-**Calcul du barycentre sur un exemple**
+Considérer la règle du second ordre $u_n(t+1)=2u_n(t)-u_n(t-1)-(Lu(t))_n$.
 
-Sur la chaîne, avec la bosse asymétrique :
-$u_{-1}(0) = 1, u_0(0) = 2, u_1(0) = 3$, et $u_n(0) = 0$ ailleurs.
+1. Vérifier qu’un champ constant dans l’espace et dans le temps est solution.
+2. Pour une fonction quelconque $f$, poser $u_n(t)=f(n-t)$. Vérifier directement que cette forme est solution sur Z.
+3. Refaire le calcul pour $u_n(t)=f(n+t)$.
+4. Que permet de distinguer la donnée de deux instants successifs, que la diffusion du premier ordre ne permettait pas de distinguer ?
+5. Cette expérience prouve-t-elle déjà que toute dynamique du second ordre est réversible et stable ? Répondre en donnant la propriété manquante.
 
-1. Calculer le barycentre $X(0) = \frac{\sum_n n u_n(0)}{\sum_n u_n(0)}$.
-2. Calculer $u_n(1)$ pour $n = -1, 0, 1, 2, 3$.
-3. Calculer $X(1)$ et vérifier qu'il est égal à $X(0)$.
+## 7. Bilan critique
 
----
+Rédiger une réponse structurée à la question :
 
-### Exercice 2.5 ★★★
-**Preuve générale : le barycentre est immobile**
+> Pourquoi la dynamique de diffusion conserve-t-elle une quantité globale tout en détruisant la forme locale d’une bosse ?
 
-Montrer que pour la dynamique $u_n(t+1) = \frac{u_{n-1}(t) + u_{n+1}(t)}{2}$ sur la chaîne $\mathbb{Z}$,
-le barycentre $X(t) = \frac{\sum_n n u_n(t)}{\sum_n u_n(t)}$ est constant au cours du temps.
-
-**Indice** : Montrer que $\sum_n n u_n(t+1) = \sum_n n u_n(t)$ en utilisant la formule de $u_n(t+1)$.
-
----
-
-### Exercice 2.6 ★★
-**Barycentre sur un graphe quelconque**
-
-Soit un graphe quelconque et la dynamique $u(t+1) = u(t) - \varepsilon L u(t)$.
-
-Montrer que pour **n'importe quelle fonction $f: V \to \mathbb{R}$**, on a :
-$$\sum_v f(v) u_v(t+1) = \sum_v f(v) u_v(t) - \varepsilon \sum_{\{v,w\} \in E} (f(v) - f(w))(u_v(t) - u_w(t)).$$
-
-**Cas particulier** : Si $f$ est une fonction **harmonique** (i.e., $(Lf)_v = 0$ pour tout $v$), que devient cette égalité ?
-
----
-
-## series 3 : Comprendre l'échec
-
-### Exercice 2.7 ★★
-**Symétrie et impossibilité du mouvement**
-
-Considérons une bosse symétrique sur la chaîne : $u_{-k}(0) = u_k(0)$ pour tout $k$.
-
-1. Montrer que pour tout $t$, on a $u_{-k}(t) = u_k(t)$ (la symétrie est préservée).
-2. En déduire que le barycentre reste en $0$ pour toujours.
-3. *Question ouverte* : Si on brise la symétrie initiale (comme à l'exercice 2.4), peut-on espérer un mouvement ? Expliquer pourquoi la réponse est non.
-
----
-
-### Exercice 2.8 ★★★
-**Vitesse d'étalement de la bosse**
-
-Sur la chaîne avec $\varepsilon = \frac{1}{2}$, soit la bosse initiale :
-$u_0(0) = 1$, $u_n(0) = 0$ pour $n \neq 0$.
-
-1. Calculer $u_n(1)$ pour $n = -1, 0, 1$.
-2. Calculer $u_n(2)$ pour $n = -2, -1, 0, 1, 2$.
-3. Calculer $u_n(3)$ pour $n = -3, -2, -1, 0, 1, 2, 3$.
-4. Observer le pattern. Quelle est la vitesse à laquelle l'information se propage ?
-5. Comparer avec un mouvement balistique (où la bosse avancerait d'un cran par pas de temps).
-
----
-
-### Exercice 2.9 ★★
-**Marche aléatoire vs diffusion déterministe**
-
-Soit une marche aléatoire simple sur $\mathbb{Z}$ : à chaque pas, le marcheur va à gauche ou à droite avec probabilité $1/2$.
-
-1. Quelle est l'espérance de la position après $t$ pas ?
-2. Quelle est la variance de la position après $t$ pas ?
-3. Pour la dynamique de diffusion $u_n(t+1) = \frac{u_{n-1}(t) + u_{n+1}(t)}{2}$ avec la condition initiale $u_0(0) = 1$ et $0$ ailleurs, calculer la variance de la distribution à $t=2$ (i.e., $ \sum_n n^2 u_n(2) $).
-4. Comparer les comportements. Que partagent la marche aléatoire et la diffusion déterministe ?
-
----
-
-## series 4 : Vers la solution — comprendre ce qu'il manque
-
-### Exercice 2.10 ★★★
-**Dynamique avec mémoire : premier essai**
-
-Supposons qu'on utilise une dynamique du second ordre (avec mémoire) :
-$$u(t+1) = 2u(t) - u(t-1) - \varepsilon^2 L u(t).$$
-
-*Remarque* : Cette dynamique utilise $u(t)$ et $u(t-1)$.
-
-1. Vérifier que si $u(t) = u(t-1) = c$ (champ constant), alors $u(t+1) = c$ aussi.
-2. Soit une bosse qui se déplace à vitesse constante : $u_n(t) = f(n - vt)$ pour une certaine fonction $f$ et vitesse $v$.
-   Montrer que si on choisit $\varepsilon = 1$ et $v = 1$, alors cette dynamique peut préserver la forme de la bosse.
-   *Indice* : Calculer $u_n(t+1) - 2u_n(t) + u_n(t-1)$ pour $u_n(t) = f(n-t)$.
-3. *Interprétation* : Que représente le terme $2u(t) - u(t-1)$ ?
-
----
-
-### Exercice 2.11 ★★ (Optionnel - peut utiliser Python)
-**Simuler l'échec sur un graphe plus grand**
-
-Sur une chaîne de 11 nœuds indexés de $-5$ à $5$, avec la bosse initiale :
-$u_{-2}(0) = 1, u_{-1}(0) = 2, u_0(0) = 3, u_1(0) = 2, u_2(0) = 1$, et $0$ ailleurs.
-
-1. Calculer à la main (ou avec Python) $u_n(1), u_n(2), u_n(3)$.
-2. Tracer l'évolution du profil.
-3. Calculer le barycentre à chaque pas et vérifier qu'il reste constant.
-4. *Option Python* : Écrire un script qui calcule 10 pas de temps et affiche l'évolution. Observer que la bosse s'étale sans se déplacer.
-
----
-
-## Solutions attendues et conseils
-
-- **Pour les calculs directs** (Ex 2.1, 2.3, 2.4, 2.8, 2.11) : Faire les calculs pas à pas avec soin. Une erreur courante est d'oublier que le Laplacien sur une chaîne se simplifie en $2u_n - u_{n-1} - u_{n+1}$.
-- **Pour les preuves de conservation** (Ex 2.2, 2.5, 2.6) : Utiliser systématiquement la propriété $\sum_v (\mathcal{L}u)_v = 0$ et manipuler les sommes avec attention.
-- **Pour l'interprétation** : Se rappeler que **sans mémoire, pas de direction**. Le barycentre est une quantité conservée qui bloque tout déplacement net.
-- **Pour l'exercice 2.10** : C'est un avant-goût du chapitre suivant. La mémoire (deux instants) permet d'introduire une notion de "vitesse".
-
----
-
-## Résumé des concepts clés à maîtriser après ces exercices
-
-✅ Dynamique de diffusion : $u(t+1) = u(t) - \varepsilon L u(t)$  
-✅ Conservation de la somme $\sum_v u_v(t)$  
-✅ Conservation du barycentre $X(t) = \frac{\sum_v x_v u_v(t)}{\sum_v u_v(t)}$  
-✅ Étalement diffusif vs mouvement balistique  
-✅ Théorème d'impossibilité : sans mémoire, pas de déplacement net  
-✅ Nécessité d'introduire $u(t-1)$ pour briser la symétrie temporelle  
-✅ Lien entre marche aléatoire et équation de la chaleur discrète
+La réponse devra distinguer conservation de la somme, conservation du barycentre, propagation de l’influence et conservation de la forme.
