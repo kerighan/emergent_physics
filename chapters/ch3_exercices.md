@@ -3,9 +3,9 @@
 On travaille avec un graphe fini, simple et non orienté, de Laplacien $`L`$.
 L’état à la date $`t`$ est le couple de champs $`(u(t),u(t-1))`$.
 
-> **Point de vigilance.** Le chapitre affirme que la réversibilité force le
-> coefficient $`\delta`$ à être nul. Les exercices 3 et 4 demandent de vérifier
-> cette affirmation au lieu de la prendre pour acquise.
+> **Point de vigilance.** Il faut distinguer deux notions : pouvoir reconstruire
+> le passé, et retrouver exactement la même règle locale après renversement du
+> temps. L’exercice 3 précise cette distinction.
 
 ## 1. Deux photographies sont-elles vraiment nécessaires ?
 
@@ -38,12 +38,14 @@ $`u(t+1)=\alpha u(t)+\beta u(t-1)-\gamma Lu(t)-\delta Lu(t-1)`$.
 
 Partir de la règle de l’exercice 2 et supposer $`\beta\neq0`$.
 
-1. Isoler $`u(t-1)`$ en fonction de $`u(t+1)`$ et $`u(t)`$.
-2. Écrire la règle obtenue après renversement du temps, en échangeant les
+1. Regrouper les termes contenant $`u(t-1)`$ et montrer que
+   $`(I+\delta L)u(t-1)=(\alpha I-\gamma L)u(t)-u(t+1)`$.
+2. À quelle condition peut-on reconstruire le passé ? Cette condition dépend-elle
+   du graphe et du spectre de $`L`$ ?
+3. Écrire la relation obtenue après renversement du temps, en échangeant les
    rôles de $`t+1`$ et $`t-1`$.
-3. Comparer les coefficients et résoudre les conditions de réversibilité.
-4. Montrer que la branche non triviale donne $`\beta=-1`$ et $`\alpha=2`$,
-   mais que $`\delta`$ n’est pas forcé à être nul.
+4. Montrer que si l’on exige que cette relation soit **la même règle locale**,
+   avec le même coefficient devant le Laplacien, alors $`\delta=0`$.
 5. Examiner séparément la branche $`\beta=1`$. Que devient-elle après la
    condition $`\alpha+\beta=1`$ ?
 
@@ -52,13 +54,14 @@ Partir de la règle de l’exercice 2 et supposer $`\beta\neq0`$.
 Sur un graphe quelconque, considérer
 $`u(t+1)=2u(t)-u(t-1)-\gamma Lu(t)-\delta Lu(t-1)`$.
 
-1. Vérifier directement que l’on peut remonter le temps par
-   $`u(t-1)=2u(t)-u(t+1)-\gamma Lu(t)-\delta Lu(t+1)`$.
-2. Choisir un graphe à deux sommets, $`\gamma=1`$ et $`\delta=1/2`$.
-   Calculer un pas de temps à partir de deux champs simples.
-3. Vérifier sur cet exemple que la marche arrière reconstruit exactement les
-   deux champs de départ.
-4. Rédiger en trois lignes la correction à apporter à la phrase « la règle est
+1. Choisir un graphe à deux sommets, $`\gamma=1`$ et $`\delta=1/2`$.
+   Écrire explicitement la matrice $`I+\delta L`$.
+2. Prendre $`u(-1)=(1,0)`$ et $`u(0)=(0,0)`$. Calculer $`u(1)`$.
+3. Calculer $`(I+\delta L)^{-1}`$ et reconstruire $`u(-1)`$ à partir de
+   $`u(0)`$ et $`u(1)`$.
+4. Vérifier que l’inverse existe ici, mais qu’il ne s’agit pas de la même règle
+   locale que la règle directe.
+5. Rédiger en trois lignes la correction à apporter à la phrase « la règle est
    forcée » du chapitre.
 
 ## 5. La règle retenue par le chapitre
