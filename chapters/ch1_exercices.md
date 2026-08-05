@@ -7,12 +7,12 @@ Ces exercices distinguent les faits algébriques, les interprétations et les hy
 Soit la chaîne à quatre sommets $A-B-C-D$.
 
 1. Écrire les matrices d’adjacence $A$, des degrés $D$, puis $L=D-A$.
-2. Pour $u=(2,-1,0,3)^T$, calculer $Lu$ par produit matriciel et par la formule locale $(Lu)_v=Σ_{w~v}(u_v-u_w)$.
+2. Pour $u=(2,-1,0,3)^T$, calculer $Lu$ par produit matriciel et par la formule locale $(Lu)_v=\sum_{w\sim v}(u_v-u_w)$.
 3. Vérifier que la somme des composantes de $Lu$ est nulle.
 
 ## 2. Ce qui est réellement imposé
 
-À un sommet $v$, on cherche $(Lu)_v=a_v u_v+Σ_{w~v} b_{vw}u_w$.
+À un sommet $v$, on cherche $(Lu)_v=a_v u_v+\sum_{w\sim v} b_{vw}u_w$.
 
 1. Traduire « aucun voisin n’est privilégié » en une condition sur $b_{vw}$.
 2. Traduire « tout champ constant est annulé » et en déduire la relation entre $a_v$, le degré de $v$ et le coefficient commun $b$.
@@ -29,7 +29,7 @@ Sur la chaîne précédente, considérer $u=(0,1,2,1)$.
 
 ## 4. Positivité et énergie de Dirichlet
 
-Pour un graphe quelconque, montrer $u^T L u=Σ_{\{v,w\}∈E}(u_v-u_w)^2$.
+Pour un graphe quelconque, montrer $u^T L u=\sum_{\{v,w\}\in E}(u_v-u_w)^2$.
 
 1. En déduire que $L$ est positif.
 2. Si le graphe est connexe, montrer que l’énergie est nulle si et seulement si $u$ est constant.
