@@ -9,9 +9,9 @@
 Nous disposons d'un champ $`u`$ et d'un opérateur $`L`$. Nulle part il n'y a de « chose » qui se déplace. Il faut donc commencer par décider ce qu'un objet *pourrait être* dans ce monde.
 
 La proposition la plus honnête est la suivante : un objet est une **configuration localisée du champ** — une région où $`u`$ est grand, entourée d'un fond où $`u`$ est nul. Concrètement, sur la chaîne $`\mathbb{Z}`$, une bosse :
-$$
+```math
 u_{-1} = 1,\quad u_0 = 2,\quad u_1 = 1, \qquad u_n = 0 \text{ ailleurs.}
-$$
+```
 
 Et nous dirons que l'objet **se déplace** si, aux instants suivants, on retrouve *la même bosse*, simplement posée ailleurs. Pas une bosse déformée, pas une trace diluée : la même forme, translatée. C'est exigeant, mais c'est bien ce que fait une balle qu'on lance — elle ne se dissout pas en vol.
 
@@ -20,9 +20,9 @@ Reste à faire évoluer le champ. Introduisons le temps de la manière la plus �
 ## 2. La règle la plus pauvre possible
 
 Que peut utiliser un point $`v`$ pour décider de sa prochaine valeur ? Fidèles à la parcimonie, donnons-lui le strict minimum : **l'état présent, et rien d'autre**. Sa valeur $`u_v(t)`$, celles de ses voisins — c'est-à-dire, comme le chapitre I nous l'a appris, sa valeur et son Laplacien. La règle locale, linéaire et homogène la plus générale est alors
-$$
+```math
 u_v(t+1) \;=\; u_v(t) \;-\; \varepsilon\, (Lu(t))_v ,
-$$
+```
 où $`\varepsilon > 0`$ est un petit pas. (Le coefficient devant $`u_v(t)`$ doit valoir $`1`$ : sinon un champ constant, censé être inerte, se mettrait à croître ou à fondre sur place.)
 
 Lisons cette règle en français avant de la lancer :
@@ -36,19 +36,19 @@ Un point au-dessus de la moyenne locale ($`Lu > 0`$) redescend ; un point en des
 Prenons $`\varepsilon = \tfrac{1}{2}`$ pour la lisibilité (sur la chaîne, la règle devient : *chaque point prend la moyenne de ses deux voisins*, puisque $`u_n(t+1) = u_n - \tfrac12(2u_n - u_{n-1} - u_{n+1}) = \tfrac{u_{n-1}+u_{n+1}}{2}`$). Calculons à la main.
 
 **À $`t=0`$ :**
-$$
+```math
 \dots,\ 0,\ 0,\ 1,\ 2,\ 1,\ 0,\ 0,\ \dots
-$$
+```
 
 **À $`t=1`$ :** chaque point prend la moyenne de ses voisins :
-$$
+```math
 \dots,\ 0,\ 0.5,\ 1,\ 1,\ 1,\ 0.5,\ 0,\ \dots
-$$
+```
 
 **À $`t=2`$ :**
-$$
+```math
 \dots,\ 0.25,\ 0.5,\ 0.75,\ 1,\ 0.75,\ 0.5,\ 0.25,\ \dots
-$$
+```
 
 Le verdict est sans appel, et il est double.
 
@@ -61,14 +61,14 @@ Ce comportement porte un nom : la **diffusion**. Notre règle est exactement l'�
 ## 4. Peut-on tricher en poussant la bosse ?
 
 Un lecteur combatif objectera : la bosse était immobile au départ, rien d'étonnant à ce qu'elle le reste. Donnons-lui un élan ! Rendons la condition initiale asymétrique — plus de poids à droite :
-$$
+```math
 u_{-1} = 1,\quad u_0 = 2,\quad u_1 = 3,\qquad u_n = 0 \text{ ailleurs.}
-$$
+```
 Un pas de calcul ($`t=1`$) : $`\;\dots,\ 0.5,\ 1,\ 2.5,\ 1,\ 1.5,\ \dots`$ — le centre de gravité, lui, n'a pas bougé. Ce n'est pas un accident. Calculons le **barycentre** $`X(t) = \sum_n n\, u_n(t) \,/\, \sum_n u_n(t)`$. Le dénominateur est conservé (§3). Pour le numérateur :
-$$
+```math
 \sum_n n\, u_n(t+1) = \sum_n n\,\frac{u_{n-1}(t) + u_{n+1}(t)}{2}
 = \sum_m \frac{(m+1) + (m-1)}{2}\, u_m(t) = \sum_m m\, u_m(t).
-$$
+```
 Le barycentre est **rigoureusement immobile**, quel que soit le profil initial. On peut sculpter la bosse comme on veut : son centre ne se déplacera jamais d'un pouce. La dynamique de nivellement est constitutionnellement incapable de transporter quoi que ce soit.
 
 ## 5. L'autopsie : où l'information de direction pourrait-elle vivre ?
@@ -90,9 +90,9 @@ La mécanique nous fait ici un clin d'œil qu'il faut savourer : c'est exactemen
 ## 6. Une remarque avant de continuer : le hasard n'aurait pas fait mieux
 
 On aurait pu tenter une autre voie naïve : lâcher un jeton sur un nœud, et le faire sauter à chaque instant vers un voisin choisi au hasard — une **marche aléatoire**. C'est le même échec, vu de profil. Sur la chaîne, la position après $`t`$ pas est $`X_t = \xi_1 + \dots + \xi_t`$ avec des pas indépendants $`\xi_i = \pm 1`$ ; d'où
-$$
+```math
 \mathbb{E}[X_t] = 0, \qquad \mathbb{E}[X_t^2] = t, \qquad \text{distance typique} \sim \sqrt{t}.
-$$
+```
 Un mobile digne de ce nom parcourt une distance proportionnelle à $`t`$ — le régime **balistique**. La marche aléatoire fait $`\sqrt t`$ — le régime **diffusif** : pour aller deux fois plus loin, il lui faut *quatre* fois plus de temps. Et la raison profonde est identique : à chaque pas, le jeton ignore d'où il vient ; son prochain saut ne dépend que de sa position présente. Diffusion déterministe du champ, marche aléatoire du jeton : deux visages du même défaut, **l'absence de mémoire**. (Ce n'est pas un hasard si la densité de probabilité de la marche obéit précisément à notre équation de diffusion.)
 
 ## 7. Où nous en sommes

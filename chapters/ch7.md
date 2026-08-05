@@ -16,7 +16,9 @@ Ce chapitre est plus algébrique que les précédents, et c'est voulu : nous all
 Plaçons-nous sur l'anneau à $`N`$ nœuds. « Tous les lieux se valent » signifie : si je décale toute la configuration d'un cran, les lois ne s'en aperçoivent pas. Donnons un nom à ce décalage.
 
 > **Définition (opérateur de translation).** $`T`$ est l'opérateur qui pousse tout le champ d'un cran :
-> $$(Tu)_n = u_{n-1} \qquad (\text{indices modulo } N).$$
+> ```math
+> (Tu)_n = u_{n-1} \qquad (\text{indices modulo } N).
+> ```
 
 $`T`$ est une matrice $`N \times N`$ parfaitement concrète : des $`1`$ juste sous la diagonale, un $`1`$ dans le coin pour reboucler. Trois propriétés, chacune vérifiable en une ligne :
 
@@ -25,21 +27,23 @@ $`T`$ est une matrice $`N \times N`$ parfaitement concrète : des $`1`$ juste so
 **(ii) $`T`$ préserve les longueurs** : $`\|Tu\|^2 = \sum_n u_{n-1}^2 = \|u\|^2`$ (on somme les mêmes nombres dans un autre ordre).
 
 **(iii) $`T`$ commute avec $`L`$** :
-$$
+```math
 \boxed{\;TL = LT.\;}
-$$
+```
 *Preuve.* Calculons les deux membres sur un champ $`u`$, au nœud $`n`$ :
-$$
+```math
 (TLu)_n = (Lu)_{n-1} = 2u_{n-1} - u_{n-2} - u_n, \qquad
 (LTu)_n = 2(Tu)_n - (Tu)_{n-1} - (Tu)_{n+1} = 2u_{n-1} - u_{n-2} - u_n. \;\blacksquare
-$$
+```
 
 Ne passons pas trop vite sur (iii) : c'est **la** traduction mathématique de l'homogénéité. Elle dit : *mesurer la rugosité puis décaler, ou décaler puis mesurer la rugosité, c'est pareil* — le Laplacien ne sait pas où il est. Sur un graphe quelconque, cette équation serait fausse : elle est vraie ici parce que l'anneau se superpose exactement à lui-même après décalage. Conséquence immédiate, qui justifie tout :
 
 > **Proposition.** Si $`u(t)`$ est une solution de la dynamique, alors $`Tu(t)`$ est une solution.
 >
 > *Preuve.* Appliquons $`T`$ à la règle $`u(t{+}1) = 2u(t) - u(t{-}1) - c^2Lu(t)`$ :
-> $$Tu(t{+}1) = 2\,Tu(t) - Tu(t{-}1) - c^2\,TLu(t) = 2\,Tu(t) - Tu(t{-}1) - c^2\,L\,\bigl(Tu(t)\bigr),$$
+> ```math
+> Tu(t{+}1) = 2\,Tu(t) - Tu(t{-}1) - c^2\,TLu(t) = 2\,Tu(t) - Tu(t{-}1) - c^2\,L\,\bigl(Tu(t)\bigr),
+> ```
 > où l'on a utilisé $`TL = LT`$ à la dernière étape. C'est exactement la règle, appliquée au champ décalé. $`\blacksquare`$
 
 L'histoire d'un objet, jouée un cran plus loin, est une histoire tout aussi légale. Voilà notre symétrie. Noether promet un trésor : allons le chercher.
@@ -49,7 +53,9 @@ L'histoire d'un objet, jouée un cran plus loin, est une histoire tout aussi lé
 Comment fabriquer une quantité conservée à partir de $`T`$ ? Guidons-nous sur le seul succès que nous ayons : l'énergie du chapitre IV, $`E = \frac12\|u(t)-u(t{-}1)\|^2 + \frac{c^2}{2}u(t)^\top L\, u(t{-}1)`$. Sa pièce maîtresse était une forme *enjambant les deux photographies*, $`u(t)^\top M\, u(t{-}1)`$, avec $`M = L`$. Essayons la même architecture, en remplaçant $`L`$ par un opérateur construit sur $`T`$. Lequel ? Il nous faut un objet qui *distingue les deux sens* — qui change de signe quand on retourne l'anneau. Le candidat s'impose : $`T - T^\top`$ (décaler à droite *moins* décaler à gauche).
 
 > **Définition (quantité de mouvement).**
-> $$\boxed{\;P(t) \;=\; u(t)^\top \bigl(T - T^\top\bigr)\, u(t-1) \;=\; \sum_n u_n(t)\,\bigl(u_{n-1}(t{-}1) - u_{n+1}(t{-}1)\bigr).\;}$$
+> ```math
+> \boxed{\;P(t) \;=\; u(t)^\top \bigl(T - T^\top\bigr)\, u(t-1) \;=\; \sum_n u_n(t)\,\bigl(u_{n-1}(t{-}1) - u_{n+1}(t{-}1)\bigr).\;}
+> ```
 
 > **Théorème.** $`P(t+1) = P(t)`$ pour toute solution. *Exactement.*
 
@@ -78,10 +84,10 @@ Rien d'autre. Pas de coordonnées, pas de vecteurs, pas de limite continue. (Et 
 Une formule conservée ne vaut que si l'on comprend ce qu'elle *dit*. Reprenons l'objet du chapitre VI, sur l'anneau à $`4`$ nœuds : la bosse $`u(0) = (2,1,0,1)`$, et calculons $`P = \sum_n u_n(0)\bigl(u_{n-1}(-1) - u_{n+1}(-1)\bigr)`$ dans trois situations.
 
 **Bosse lancée vers la droite** ($`u(-1) = (1,0,1,2)`$, la bosse était un cran à gauche) :
-$$
+```math
 P = \underbrace{2\,(u_3 - u_1)}_{n=0} + \underbrace{1\,(u_0 - u_2)}_{n=1} + \underbrace{0\,(\cdots)}_{n=2} + \underbrace{1\,(u_2 - u_0)}_{n=3}
 = 2(2-0) + (1-1) + 0 + (1-1) = \mathbf{+4}.
-$$
+```
 
 **Bosse lancée vers la gauche** ($`u(-1) = (1,2,1,0)`$) : le même calcul donne $`2(0-2) + 0 + 0 + 0 = \mathbf{-4}`$.
 
@@ -92,9 +98,9 @@ Le verdict est net : $`P`$ est **positive vers la droite, négative vers la gauc
 ## 4. $`P`$ sur les ondes : le retour de $`k`$
 
 Évaluons maintenant $`P`$ sur une onde progressive pure, $`u_n(t) = \cos(kn - \omega t)`$, notre objet élémentaire du chapitre VI. Le calcul (identités produit-somme, les termes oscillants s'annulant sur l'anneau) donne une formule fermée :
-$$
+```math
 \boxed{\;P_{\text{onde}} = N \sin(k)\,\sin(\omega).\;}
-$$
+```
 (Vérifiée numériquement à $`10^{-6}`$ près.) Lisons-la, car chaque facteur parle. Elle est **impaire en $`k`$** : l'onde $`-k`$, qui court dans l'autre sens, porte l'élan opposé — et une onde stationnaire, superposition de $`+k`$ et $`-k`$, porte un élan exactement nul, conformément au « bosse au repos » du §3. Elle est nulle pour $`k = 0`$ (le fond uniforme ne va nulle part) et — plus subtil — pour $`k = \pi`$ : le zigzag, dont le chapitre VI a montré qu'il *piétine* ($`v_g = 0`$), a beau vibrer de toutes ses forces, son élan est nul. $`P`$ ne se laisse pas impressionner par l'agitation : il ne compte que le *transport*.
 
 Aux grandes longueurs d'onde ($`k`$ petit, $`\omega \approx ck`$), la formule devient $`P \approx N\,c\,k^2 \cdot \tfrac{1}{c} \cdot \tfrac{\omega}{k}`$… tenons-nous en au fait essentiel : à énergie donnée, $`P`$ *croît avec $`k`$*. Le nombre d'onde $`k`$, entré au chapitre VI comme un simple compteur de tours par arête, se révèle être la **densité d'élan par unité d'énergie** de chaque composante. C'est pourquoi les physiciens l'appellent la **quasi-impulsion** : sur un réseau, $`k`$ joue le rôle que l'impulsion $`p`$ joue dans le continu. (Le préfixe *quasi* rappelle une particularité de bon aloi : $`k`$ vit sur un cercle — $`k`$ et $`k + 2\pi`$ décrivent la même ondulation, puisque seuls comptent les nœuds. L'élan d'un monde discret est une grandeur *périodique*. Retenons cette bizarrerie : elle aura des conséquences.)

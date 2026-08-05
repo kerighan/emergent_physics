@@ -9,17 +9,17 @@
 Pour étudier le mouvement, il nous faut un univers où le mouvement a ses chances : un graphe où *tous les lieux se valent*, sans bords où buter. Le plus simple est l'**anneau** : $`N`$ nœuds en cercle, $`0, 1, \dots, N-1`$, chacun relié à ses deux voisins, le dernier rebouclé sur le premier. C'est la chaîne du chapitre III, débarrassée de ses extrémités — l'incarnation parfaite de notre axiome d'homogénéité : décaler tout le monde d'un cran est une opération que le graphe ne remarque même pas.
 
 Dressons le catalogue des formes élémentaires de cet instrument. Quelles sont les configurations dont la rugosité est *partout la même* — condition nécessaire pour être vecteur propre, puisque $`L\varphi = \lambda\varphi`$ exige que chaque nœud dévie de ses voisins dans la même proportion ? Sur un anneau, la réponse s'impose d'elle-même : les **ondulations régulières**,
-$$
+```math
 \varphi_n = \cos(kn) \qquad\text{et}\qquad \psi_n = \sin(kn),
-$$
+```
 où le **nombre d'onde** $`k`$ mesure combien l'ondulation tourne par arête. (Pour se refermer proprement sur l'anneau, $`k`$ doit être un multiple de $`2\pi/N`$ — l'instrument a bien $`N`$ notes, comme l'exige le théorème spectral.) Vérifions pour $`\cos`$ : au nœud $`n`$,
-$$
+```math
 (L\varphi)_n = 2\cos(kn) - \cos(k(n{-}1)) - \cos(k(n{+}1)) = 2\bigl(1 - \cos k\bigr)\cos(kn),
-$$
+```
 par la formule d'addition. C'est bien $`L\varphi = \lambda\varphi`$ avec
-$$
+```math
 \lambda(k) = 2 - 2\cos k = 4\sin^2\!\frac{k}{2},
-$$
+```
 et le même calcul vaut mot pour mot pour $`\sin`$. D'où une remarque lourde de conséquences : **les notes de l'anneau viennent par paires**. Pour chaque $`k`$, le cosinus et le sinus — la même ondulation, décalée d'un quart de tour — portent *exactement la même valeur propre*, donc vibrent *exactement à la même fréquence* $`\omega(k)`$, celle du chapitre V : $`\sin^2(\omega/2) = c^2\lambda/4 = c^2\sin^2(k/2)`$.
 
 Deux formes immobiles, parfaitement jumelles, qui chantent la même note. Voilà nos conjurés.
@@ -27,9 +27,9 @@ Deux formes immobiles, parfaitement jumelles, qui chantent la même note. Voilà
 ## 2. La conspiration, démasquée
 
 Faisons-les chanter ensemble, mais pas *en phase* : décalons leurs horloges d'un quart de période. La superposition (licite : la dynamique est linéaire) s'écrit
-$$
+```math
 u_n(t) \;=\; \cos(\omega t)\cos(kn) \;+\; \sin(\omega t)\sin(kn) \;=\; \cos\bigl(kn - \omega t\bigr).
-$$
+```
 Lisons le membre de droite : c'est l'ondulation $`\cos(kn)`$… dont le motif entier **glisse** de $`\omega/k`$ nœuds par pas de temps. Une **onde progressive**. Aucun des deux conjurés ne bouge — le cosinus respire sur place, le sinus respire sur place — mais leur duo déphasé compose un motif qui, lui, voyage. Au moment où le mode cosinus passe par son maximum ici, le mode sinus passe par le sien un quart de longueur d'onde plus loin ; un quart de période plus tard, les rôles ont tourné, et la crête totale s'est déplacée d'autant. Le mouvement est un *relais* : chaque forme immobile tend le témoin à sa jumelle décalée.
 
 Le paradoxe du chapitre V est résolu, et la résolution est plus fine qu'espéré : le voyage n'exige pas une conspiration de tout le catalogue, mais seulement la complicité de **deux** modes — à condition qu'ils soient *dégénérés* (même fréquence). Et cette dégénérescence n'est pas un hasard : elle est le cadeau de la symétrie de l'anneau. Sur un graphe sans symétrie, les fréquences sont toutes différentes, aucun relais parfait n'est possible — première indication que **le mouvement est un privilège des univers réguliers**. Nous y reviendrons.
@@ -41,19 +41,19 @@ Une onde infinie qui glisse, c'est bien ; mais le lecteur est en droit d'exiger 
 **Quelle liberté a-t-on sur la forme ?** Totale. C'est le théorème spectral du chapitre V qui la garantit : les ondulations $`\cos(kn)`$, $`\sin(kn)`$ forment une *base* — **tout** profil sur l'anneau, bosse pointue, plateau, deux bosses disjointes, vos initiales en morse, s'écrit d'une seule manière comme accord $`u_n = \sum_k A_k \cos(kn - \phi_k)`$. Un « objet » n'est donc soumis à aucun cahier des charges de forme, et la contiguïté n'est pas requise : deux bosses séparées sont un objet parfaitement licite (ou deux objets — la linéarité rend la distinction purement verbale : chacune voyage comme si l'autre n'existait pas, et si elles se croisent, elles se *traversent* et ressortent intactes). Ce que l'on ne choisit **pas**, en revanche, c'est le destin : une fois la forme posée, la relation de dispersion attribue d'office sa fréquence $`\omega(k)`$ à chaque composante. La forme est libre ; son avenir ne l'est pas.
 
 **La recette du mouvement.** Pour animer le profil, on lance chaque composante comme onde progressive, toutes dans le même sens :
-$$
+```math
 u_n(t) \;=\; \sum_k A_k \cos\bigl(kn - \omega(k)\,t - \phi_k\bigr).
-$$
+```
 À $`t = 0`$, c'est exactement votre profil ; ensuite, chaque onde glisse à sa vitesse $`\omega(k)/k`$, et leur somme *est* l'objet en voyage.
 
 **L'exemple complet, vérifiable à la main.** Prenons le plus petit anneau intéressant : $`N = 4`$ nœuds, $`c = 1`$, et le profil $`u(0) = (2, 1, 0, 1)`$ — une bosse posée sur le nœud $`0`$. Sa décomposition tient en deux termes : la moyenne vaut $`1`$, et le reste $`(1, 0, -1, 0)`$ est *exactement* l'ondulation $`\cos(kn)`$ pour $`k = \tfrac{\pi}{2}`$. Donc
-$$
+```math
 u_n(0) = 1 + \cos\!\Bigl(\frac{\pi}{2}n\Bigr) : \qquad \text{un accord de deux notes seulement.}
-$$
+```
 Animons : le fond ($`k=0`$) ne bouge pas, et l'ondulation devient progressive avec sa fréquence attitrée, $`\sin(\omega/2) = \sin(\pi/4)`$ d'où $`\omega = \tfrac{\pi}{2}`$ :
-$$
+```math
 u_n(t) = 1 + \cos\!\Bigl(\frac{\pi}{2}(n - t)\Bigr).
-$$
+```
 Lisons la prédiction : $`(2,1,0,1) \to (1,2,1,0) \to (0,1,2,1) \to \dots`$ — la bosse fait le tour de l'anneau, un nœud par pas. Et maintenant, contre-vérifions avec la dynamique elle-même, sans aucune onde : la règle du chapitre III, $`u_n(t{+}1) = u_{n-1}(t) + u_{n+1}(t) - u_n(t{-}1)`$, avec le passé décalé $`u(-1) = (1, 0, 1, 2)`$. Nœud par nœud : $`u_0(1) = 1 + 1 - 1 = 1`$ ; $`u_1(1) = 2 + 0 - 0 = 2`$ ; $`u_2(1) = 1 + 1 - 1 = 1`$ ; $`u_3(1) = 0 + 2 - 2 = 0`$. Résultat : $`(1, 2, 1, 0)`$. **Les deux calculs coïncident exactement.** Ce sont deux descriptions du même événement : côté nœuds, un relais de voisin à voisin orchestré par la mémoire ; côté ondes, deux notes dont l'une glisse. La bosse n'est pas *faite* d'ondes comme un mur est fait de briques — elle *est* un accord, et son mouvement *est* le glissement coordonné de ses composantes.
 
 (Au passage, ce petit exemple montre aussi pourquoi la rigidité est ici parfaite : avec une seule ondulation mobile, il n'y a personne avec qui être en désaccord de vitesse. Le premier vrai test de la cohésion viendra avec des accords plus riches — c'est tout l'objet de la suite du chapitre.)
@@ -61,9 +61,9 @@ Lisons la prédiction : $`(2,1,0,1) \to (1,2,1,0) \to (0,1,2,1) \to \dots`$ — 
 ## 3. La carte d'identité de l'univers
 
 Récapitulons ce que le calcul nous a livré sans qu'on le lui demande : à chaque nombre d'onde $`k`$, une fréquence
-$$
+```math
 \boxed{\;\sin\frac{\omega}{2} \;=\; c\,\sin\frac{k}{2}\;}
-$$
+```
 et une onde progressive $`\cos(kn - \omega t)`$ filant à la vitesse $`v_\varphi = \omega/k`$. Cette relation entre $`k`$ et $`\omega`$ — quelle note pour quelle ondulation — s'appelle la **relation de dispersion**, et le nom est un programme. Car regardons-la de près : la vitesse $`\omega/k`$ **dépend de $`k`$**. Les grandes ondulations lisses ($`k`$ petit, où $`\omega \approx ck`$) filent à la vitesse $`c`$ ; les ondulations serrées traînent derrière ($`\omega`$ croît moins vite que $`ck`$). Notre univers est comme un milieu où chaque couleur voyage à sa propre vitesse — un prisme.
 
 Le lecteur voit peut-être déjà la catastrophe se profiler. Mais avant de la déclencher, réglons une vieille affaire.
@@ -73,13 +73,13 @@ Le lecteur voit peut-être déjà la catastrophe se profiler. Mais avant de la d
 ## 4. La vitesse d'un objet : le pas de deux des battements
 
 Un objet localisé n'est pas une onde infinie : c'est un **paquet** — un accord d'ondes dont les $`k`$ se concentrent autour d'une valeur $`k_0`$. Pour comprendre à quelle vitesse voyage un paquet, le cas d'école suffit : superposons *deux* ondes de nombres d'onde voisins, $`k_0 \pm \tfrac{\delta}{2}`$, de fréquences $`\omega_0 \pm \tfrac{\varepsilon}{2}`$. La formule somme-produit fait le travail :
-$$
+```math
 \cos\bigl((k_0{+}\tfrac{\delta}{2})n - (\omega_0{+}\tfrac{\varepsilon}{2})t\bigr) + \cos\bigl((k_0{-}\tfrac{\delta}{2})n - (\omega_0{-}\tfrac{\varepsilon}{2})t\bigr) \;=\; 2\,\underbrace{\cos\!\Bigl(\frac{\delta n - \varepsilon t}{2}\Bigr)}_{\text{enveloppe lente}}\;\underbrace{\cos\bigl(k_0 n - \omega_0 t\bigr)}_{\text{porteuse rapide}} .
-$$
+```
 Deux mouvements cohabitent, et ils sont *indépendants*. La porteuse — les vaguelettes fines — file à la vitesse de phase $`\omega_0/k_0`$. Mais l'objet, le paquet visible, c'est l'**enveloppe** — les battements lents — et elle glisse à la vitesse $`\varepsilon/\delta`$, le rapport des *écarts*. À la limite des $`k`$ proches, ce rapport devient une dérivée : la vitesse de l'objet est la **pente de la relation de dispersion** au point $`k_0`$,
-$$
+```math
 \boxed{\;v_g \;=\; \frac{d\omega}{dk}\Big|_{k_0} \;=\; c\,\frac{\cos(k_0/2)}{\cos(\omega_0/2)}\;}
-$$
+```
 (la formule close s'obtient en dérivant $`\sin(\omega/2) = c\sin(k/2)`$). On l'appelle la **vitesse de groupe**, et c'est elle, la vraie vitesse des choses. L'expérience confirme avec une précision insolente : un paquet préparé autour de $`k_0 = 1`$ avec $`c = 0{,}7`$ doit filer, selon la formule, à $`v_g = 0{,}6521`$ ; la simulation mesure $`0{,}6521`$.
 
 La courbe $`\omega(k)`$ mérite alors son titre de **carte d'identité cinématique de l'univers** : une seule courbe, lisible d'un regard, contient *toutes* les vitesses possibles. Sa pente à l'origine est la vitesse des grandes ondes ($`v_g \to c`$). Sa pente ne dépasse jamais $`1`$ — petit calcul : $`v_g^2 = c^2(1-s)/(1 - c^2 s)`$ avec $`s = \sin^2(k/2)`$, majoré par $`1`$ dès que $`c \le 1`$ — **aucun objet ne peut battre le cône causal**, une arête par pas, et seul le monde limite $`c=1`$ le sature. Et au bord de la carte, une surprise : en $`k = \pi`$ — l'ondulation *zigzag*, $`+,-,+,-`$, la plus hérissée de toutes — la courbe devient horizontale : $`v_g = 0`$. La simulation le confirme : un paquet de zigzag, lâché sur l'anneau avec toute sa phase pour l'élan, reste cloué sur place, à vibrer furieusement sans avancer d'un pouce. Notre univers possède des ondes qui courent et des ondes qui piétinent, et la courbe dit lesquelles.

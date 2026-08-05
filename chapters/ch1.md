@@ -7,9 +7,9 @@ Avant de parler de mouvement, d'objet ou de temps, il faut répondre à une ques
 ## 1. Un chiffre sur chaque point
 
 Donnons-nous la seule chose qu'un point puisse porter : un nombre. Sur chaque sommet $`v`$ du graphe, nous écrivons une valeur $`u_v \in \mathbb{R}`$. La donnée de tous ces nombres à la fois est une fonction
-$$
+```math
 u : V \longrightarrow \mathbb{R},
-$$
+```
 que nous appellerons un **champ**. C'est notre unique matière première : une hauteur, une amplitude, une intensité — peu importe le nom — posée sur chaque point de l'univers.
 
 Nous voudrions maintenant faire *évoluer* ce champ. Mais avant d'introduire le temps, posons la question minimale : à un instant donné, quel calcul un point est-il seulement *capable* d'effectuer sur lui-même ?
@@ -31,33 +31,33 @@ Ce que nous cherchons, c'est donc une mesure de l'**écart à la moyenne locale*
 Cherchons la forme la plus générale d'un calcul local $` (\mathcal{L}u)_v `$ que le point $`v`$ puisse produire, en imposant trois exigences — chacune est une traduction directe des règles du jeu.
 
 **(a) Linéarité.** *(Parcimonie.)* C'est l'hypothèse la plus pauvre : nous supposons que doubler le champ double le résultat, et que le résultat d'une somme est la somme des résultats. Nous verrons plus tard que la non-linéarité ouvre des possibilités fascinantes (chapitre X) ; mais on ne l'introduit que lorsqu'on y est forcé. Sous cette hypothèse, le calcul est nécessairement une combinaison linéaire des valeurs disponibles :
-$$
+```math
 (\mathcal{L}u)_v \;=\; a_v\, u_v \;+\; \sum_{w \sim v} b_{vw}\, u_w .
-$$
+```
 
 **(b) Absence de voisin privilégié.** *(Homogénéité/isotropie locale.)* Rien, dans le graphe nu, ne distingue un voisin d'un autre : il n'y a pas de « voisin de droite ». Tous les voisins doivent donc entrer avec le **même poids** $`b_{vw} = b`$. D'où
-$$
+```math
 (\mathcal{L}u)_v \;=\; a_v\, u_v \;+\; b \sum_{w \sim v} u_w .
-$$
+```
 
 **(c) Un champ constant ne fait rien.** *(Pas de référence absolue.)* Nous l'avons exigé au §2 : si $`u_w = c`$ pour tout point, aucun point ne se distingue, et le calcul doit rendre $`0`$. En injectant $`u \equiv c`$ :
-$$
+```math
 0 \;=\; a_v\, c \;+\; b\, \deg(v)\, c \qquad \text{pour tout } c,
-$$
+```
 où $`\deg(v)`$ est le nombre de voisins de $`v`$. Cela force
-$$
+```math
 a_v \;=\; -\,b\,\deg(v).
-$$
+```
 
 Voilà le point remarquable. Nous n'avions rien décidé sur le coefficient diagonal $`a_v`$ ; c'est l'exigence « un champ plat est inerte » qui l'a **calculé pour nous**, et qui l'a rendu égal au degré du point. En choisissant la normalisation $`b = -1`$ (un simple choix d'échelle et de signe), on obtient
-$$
+```math
 \boxed{\;(\mathcal{L}u)_v \;=\; \deg(v)\,u_v \;-\; \sum_{w \sim v} u_w \;=\; \sum_{w \sim v} \bigl(u_v - u_w\bigr).\;}
-$$
+```
 
 Ce n'est pas *un* opérateur parmi d'autres. C'est, à une échelle près, **le seul** calcul local, homogène, linéaire et aveugle aux constantes qu'un point puisse effectuer. Les mathématiciens l'appellent le **Laplacien du graphe**, et l'écrivent sous forme matricielle
-$$
+```math
 L \;=\; D - A,
-$$
+```
 où $`A`$ est la matrice d'adjacence ($`A_{vw} = 1`$ si $`v \sim w`$, sinon $`0`$) et $`D`$ la matrice diagonale des degrés. La formule locale $`(\mathcal{L}u)_v = \sum_{w\sim v}(u_v - u_w)`$ et l'écriture globale $`Lu = (D-A)u`$ sont une seule et même chose.
 
 > **Le déclic.** Le terme diagonal $`D`$ n'est pas un ingrédient ajouté à la main. Beaucoup de présentations sortent $`L = D - A`$ d'un chapeau. Ici, on voit que $`D`$ est *forcé* : c'est le prix exact à payer pour qu'un champ plat ne bouge pas. La matrice des degrés est la trace, dans l'algèbre, d'une exigence purement physique.
@@ -67,17 +67,17 @@ où $`A`$ est la matrice d'adjacence ($`A_{vw} = 1`$ si $`v \sim w`$, sinon $`0`
 Prenons la mesure de l'objet que nous venons d'obtenir. Trois lectures suffisent à en bâtir l'intuition.
 
 **Un champ plat : rien.** Si $`u`$ est constant, $`(\mathcal{L}u)_v = 0`$ partout. En langage matriciel, le vecteur constant $`\mathbf{1} = (1,\dots,1)`$ vérifie
-$$
+```math
 L\,\mathbf{1} = 0 .
-$$
+```
 C'est notre exigence (c) devenue théorème : $`\mathbf 1`$ est vecteur propre de $`L`$ pour la valeur propre $`0`$.
 
 **Un pic : beaucoup.** Prenons un point $`v`$ à $`1`$ entouré de voisins à $`0`$. Alors $`(\mathcal{L}u)_v = \deg(v) > 0`$ : le Laplacien est grand et positif. Un creux donnerait une valeur grande et négative. Le Laplacien mesure exactement **de combien un point dévie de ses voisins**, et dans quel sens.
 
 **Une pente régulière : rien à l'intérieur.** Sur la chaîne $`\mathbb{Z}`$ (chaque point $`n`$ a pour voisins $`n-1`$ et $`n+1`$), prenons un champ affine $`u_n = \alpha n + \beta`$. Alors
-$$
+```math
 (\mathcal{L}u)_n = (u_n - u_{n-1}) + (u_n - u_{n+1}) = -\bigl(u_{n+1} - 2u_n + u_{n-1}\bigr) = 0 .
-$$
+```
 Une rampe régulière est « invisible » pour le Laplacien : ce qu'il détecte, ce n'est pas la pente, mais la **courbure** — le défaut de linéarité. On reconnaît d'ailleurs, au signe près, la différence seconde discrète $`u_{n+1} - 2u_n + u_{n-1}`$, l'analogue exact de $`-\,\partial_x^2`$. C'est pourquoi $`L`$ est le cousin discret de $`-\Delta`$, l'opposé du Laplacien continu.
 
 ## 5. Deux propriétés qui serviront partout
@@ -87,10 +87,10 @@ Le Laplacien de graphe possède deux propriétés structurelles dont nous ferons
 **$`L`$ est symétrique.** Puisque $`A`$ est symétrique ($`v\sim w \iff w \sim v`$) et $`D`$ diagonale, $`L = D - A`$ est une matrice symétrique réelle. Elle est donc diagonalisable dans une base orthonormée de vecteurs propres, à valeurs propres réelles. Cette phrase, anodine aujourd'hui, sera au chapitre V la clé de toute la dynamique : elle garantit l'existence de « mouvements élémentaires ».
 
 **$`L`$ est positive.** Un petit calcul, qu'il vaut la peine de faire une fois, révèle la vraie nature de $`L`$. Pour tout champ $`u`$,
-$$
+```math
 u^\top L\, u \;=\; \sum_{v} u_v \sum_{w\sim v}(u_v - u_w)
 \;=\; \sum_{\{v,w\}\in E} (u_v - u_w)^2 \;\ge\; 0 .
-$$
+```
 (La somme se réorganise en sommant *une fois* sur chaque arête.) Cette quantité, appelée **énergie de Dirichlet**, mesure la « rugosité » totale du champ : elle est nulle si et seulement si $`u`$ est constant sur chaque composante connexe. Retenons-la : lorsque, au chapitre IV, nous partirons en quête d'une quantité que l'univers ne sait ni créer ni détruire, cette forme quadratique — la seule que le graphe nous offre naturellement — sera notre première suspecte.
 
 ## 6. Où nous en sommes

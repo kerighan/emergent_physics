@@ -22,9 +22,9 @@ Or ces deux largeurs ne décrivent pas des vertus indépendantes. $`\Delta n`$ p
 **L'objet d'élan parfait.** Prenons $`\Delta k = 0`$ : une seule onde, $`u_n = \cos(k_0 n)`$. Son élan est irréprochable. Sa localisation ? L'onde s'étend sur *tout* l'anneau, avec la même intensité partout : $`\Delta n`$ est maximal. Un objet qui sait parfaitement où il va n'est **nulle part en particulier**.
 
 **L'objet de position parfaite.** Prenons $`\Delta n = 0`$ : toute la présence sur le seul nœud $`0`$, $`u = \delta_0 = (1, 0, 0, \dots)`$. Quel est son accord ? Sur notre anneau à $`4`$ nœuds, la décomposition se calcule en une ligne — projetons sur le catalogue $`\{(1,1,1,1),\ \cos(\tfrac{\pi}{2}n),\ \sin(\tfrac{\pi}{2}n),\ \cos(\pi n)\}`$ :
-$$
+```math
 \delta_0 = \tfrac14(1,1,1,1) + \tfrac12\cos\!\Bigl(\tfrac{\pi}{2}n\Bigr) + \tfrac14\cos(\pi n),
-$$
+```
 (vérification directe : $`\tfrac14 + \tfrac12 + \tfrac14 = 1`$ au nœud $`0`$, et $`0`$ ailleurs ✓). Lisons : le pic contient **toutes les familles d'ondes du catalogue**, du fond uniforme au zigzag, avec des poids comparables. Et c'est général : sur un anneau à $`N`$ nœuds, le pic $`\delta_0`$ recrute les $`N`$ ondes *à poids égal*. $`\Delta k`$ est maximal. Un objet qui sait parfaitement où il est n'a **aucun élan défini** — il part dans tous les sens à la fois, et le chapitre IV nous l'avait déjà *montré* sans qu'on ait su le lire : le pic au repos qui se brisait en deux ondes filantes, c'était cette démocratie des $`k`$ en action.
 
 Les extrêmes s'excluent. Reste à quantifier l'entre-deux.
@@ -32,13 +32,13 @@ Les extrêmes s'excluent. Reste à quantifier l'entre-deux.
 ## 3. Le compromis : un théorème déjà payé
 
 Le mécanisme exact est déjà entre nos mains depuis le chapitre VI, §4 — la formule des battements. Superposons deux ondes de nombres d'onde $`k_0 \pm \tfrac{\Delta k}{2}`$ :
-$$
+```math
 \cos\!\Bigl(\bigl(k_0 + \tfrac{\Delta k}{2}\bigr)n\Bigr) + \cos\!\Bigl(\bigl(k_0 - \tfrac{\Delta k}{2}\bigr)n\Bigr) = 2\,\cos\!\Bigl(\tfrac{\Delta k}{2}\,n\Bigr)\,\cos(k_0 n).
-$$
+```
 L'enveloppe $`\cos(\tfrac{\Delta k}{2}n)`$ dit tout : les deux ondes sont *en phase* au centre (elles s'additionnent, la présence est forte) et se *contrarient* dès que $`\tfrac{\Delta k}{2}n`$ approche $`\tfrac{\pi}{2}`$ — c'est-à-dire à la distance $`n \approx \pi/\Delta k`$ du centre. La localisation, dans un monde d'ondes, n'est **que cela** : une conspiration d'interférences, constructive ici, destructive partout ailleurs. Et le rayon de la zone constructive est fixé par l'écart des conspirateurs :
-$$
+```math
 \Delta n \;\approx\; \frac{\pi}{\Delta k}, \qquad\text{soit}\qquad \boxed{\;\Delta n \cdot \Delta k \;\gtrsim\; \pi.\;}
-$$
+```
 Ajouter plus d'ondes (un accord riche, aux $`k`$ bien dosés) permet d'aplatir les rebonds de l'enveloppe et d'affiner le pic — mais jamais de battre la borne : pour *confiner* la présence dans une largeur $`w`$, il faut des composantes capables de se déphaser complètement sur la distance $`w`$, donc un éventail $`\Delta k \gtrsim \pi/w`$. C'est un théorème de comptage sur les interférences, pas une subtilité : **la position s'achète en monnaie d'élan, au taux fixe $`\pi`$**. (Le lecteur qui poussera vers l'analyse de Fourier trouvera la version rigoureuse, $`\Delta n\,\Delta k \ge \tfrac12`$ pour les écarts-types, avec la gaussienne comme unique profil qui touche la borne — c'est pour cela que nos paquets d'expérience étaient gaussiens.)
 
 Une conséquence typiquement discrète mérite sa phrase. Le chapitre VII l'avait noté : $`k`$ vit sur un cercle, $`\Delta k`$ ne peut excéder $`2\pi`$. La borne donne alors $`\Delta n \gtrsim \pi/2\pi`$… de l'ordre d'**un nœud** : c'est le plancher. Rien, dans notre univers, ne peut être plus fin qu'une maille — non par interdit décrété, mais parce qu'en deçà d'un nœud, « plus fin » ne se fabrique avec aucun accord. Un monde discret porte sa propre limite de résolution.
@@ -46,13 +46,13 @@ Une conséquence typiquement discrète mérite sa phrase. Le chapitre VII l'avai
 ## 4. La loi de mortalité des objets
 
 Le compromis n'est pas une curiosité comptable : il gouverne la *durée de vie*. Rappel du chapitre VI : chaque composante $`k`$ voyage à sa vitesse $`v_g(k)`$, pente de la courbe de dispersion. Un objet de largeur $`w`$ transporte un éventail $`\Delta k \approx \pi/w`$, donc un éventail de **vitesses**
-$$
+```math
 \Delta v_g \;\approx\; \Bigl|\frac{dv_g}{dk}\Bigr|\,\Delta k \;=\; |\omega''(k_0)|\;\frac{\pi}{w},
-$$
+```
 où $`\omega''`$ est la courbure de la carte de dispersion. Le paquet se disloque quand ses composantes extrêmes se sont séparées d'environ sa propre largeur : au bout d'un temps
-$$
+```math
 t^\* \;\approx\; \frac{w}{\Delta v_g} \;\approx\; \frac{w^2}{\pi\,|\omega''(k_0)|}.
-$$
+```
 Retenons la dépendance : $`\boxed{t^\* \propto w^2}`$. **Deux fois plus localisé, quatre fois plus éphémère.** L'expérience obéit au chiffre près : sur la chaîne à $`c = 0{,}7`$, des paquets de largeurs $`6`$, $`12`$ et $`24`$ nœuds mettent respectivement $`350`$, $`1\,400`$ et $`5\,100`$ pas à s'élargir d'un facteur $`\sqrt2`$ — les rapports $`4{,}0`$ puis $`3{,}6`$, collés sur la prédiction. La formule dit aussi *où* vivre vieux : là où $`\omega'' = 0`$ — sur les portions droites de la carte. Le monde $`c = 1`$, courbe droite partout, offre l'immortalité ; partout ailleurs, chaque objet localisé porte sa date de péremption, inscrite dans sa largeur.
 
 ## 5. Le nom du théorème — et ce qu'il n'est pas

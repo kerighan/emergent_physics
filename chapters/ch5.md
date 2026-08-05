@@ -17,25 +17,25 @@ Reste à savoir ce que « simple » veut dire. C'est ici que la question du chap
 Faisons l'inventaire de ce que la dynamique a fait subir à nos objets jusqu'ici. La bosse du chapitre II s'est *dissoute*. Le pic du chapitre IV s'est *brisé* en ondes filantes. La bosse du chapitre III, elle, a survécu — mais sur un graphe d'une régularité parfaite, avec une vitesse d'exception ($`c = 1`$), et nous avons prévenu que ce miracle était fragile. La question devient donc : sur un graphe **quelconque**, existe-t-il des configurations que l'évolution ne défigure pas ?
 
 Précisons « ne pas défigurer ». Le champ a le droit de changer — tout champ figé serait vite ennuyeux — mais nous demandons que sa *forme* demeure : que le profil à l'instant $`t`$ soit toujours **proportionnel** au profil initial. Toute l'évolution serait alors portée par un seul nombre, une amplitude globale :
-$$
+```math
 u(t) \;=\; a(t)\,\varphi,
-$$
+```
 où $`\varphi`$ est un profil fixe (un nombre par nœud, choisi une fois pour toutes) et $`a(t)`$ une amplitude qui évolue. La forme reste, seule l'intensité respire.
 
 Prenons le temps de bien voir ce que cette écriture impose, car elle est plus restrictive qu'il n'y paraît. Chaque nœud $`v`$ se voit attribuer son coefficient personnel $`\varphi_v`$, une fois pour toutes ; et à l'instant $`t`$, sa valeur est $`a(t)\,\varphi_v`$ — *le même* facteur $`a(t)`$ pour tout le monde. Tous les nœuds montent et descendent **en bloc**, chacun à l'échelle de son coefficient : celui qui vaut le double d'un autre vaudra le double de cet autre à tout jamais. Le rapport entre deux nœuds quelconques est gravé dans le marbre. Autrement dit — et c'est le point qu'il ne faut pas rater — **rien ne circule** : le nœud $`3`$ ne « reçoit » jamais ce que portait le nœud $`1`$, aucun motif ne se déplace de proche en proche. C'est une photographie dont on tourne le bouton de contraste : l'image peut s'intensifier, pâlir, s'inverser (si $`a(t)`$ change de signe, tous les nœuds basculent *simultanément*), mais c'est toujours la même image. Un chœur où chaque chanteur a sa nuance attitrée, et qui enfle et diminue d'un seul souffle. Voilà notre définition d'un objet élémentaire : **une forme que la dynamique se contente de faire respirer**.
 
 De telles formes existent-elles ? Injectons l'hypothèse dans la règle :
-$$
+```math
 a(t+1)\,\varphi \;=\; 2a(t)\,\varphi - a(t-1)\,\varphi - c^2 a(t)\, L\varphi .
-$$
+```
 Tout, dans cette équation, est proportionnel à $`\varphi`$ — sauf le dernier terme. Pour que l'égalité puisse tenir avec $`a(t)`$ scalaire, il n'y a pas le choix : il faut que $`L\varphi`$ soit lui-même proportionnel à $`\varphi`$,
-$$
+```math
 \boxed{\;L\varphi = \lambda\,\varphi\;}
-$$
+```
 pour un certain nombre $`\lambda`$. Et alors l'équation vectorielle s'effondre en une équation sur la seule amplitude :
-$$
+```math
 a(t+1) \;=\; \bigl(2 - c^2\lambda\bigr)\,a(t) \;-\; a(t-1).
-$$
+```
 
 Arrêtons-nous, car c'est un moment important du livre. La condition $`L\varphi = \lambda\varphi`$ définit ce que les mathématiciens appellent un **vecteur propre** de $`L`$, de **valeur propre** $`\lambda`$. Dans la plupart des cours, ces objets sont introduits comme un outil algébrique, et l'étudiant apprend à les calculer avant de savoir à quoi ils servent. Ici, le rapport est inversé : nous ne les avons pas choisis, nous les avons *trouvés* — ce sont exactement, et uniquement, **les formes que la dynamique transporte sans les défigurer**. Chercher les vecteurs propres du Laplacien, ce n'est pas faire de l'algèbre : c'est dresser le catalogue des objets élémentaires de l'univers.
 
@@ -44,17 +44,17 @@ Arrêtons-nous, car c'est un moment important du livre. La condition $`L\varphi 
 Deux questions immédiates : ces formes existent-elles toujours ? Et sont-elles assez nombreuses pour engendrer tout le reste ? C'est ici qu'un placement de chapitre I arrive à maturité. Nous y avions noté, « pour plus tard », que $`L`$ est une matrice **symétrique réelle**. Or l'algèbre linéaire réserve à ces matrices son plus beau théorème, le *théorème spectral* : toute matrice symétrique réelle de taille $`N`$ possède exactement $`N`$ vecteurs propres, à valeurs propres réelles, formant une **base orthonormée** de l'espace tout entier.
 
 Traduisons chaque mot en physique. *Exactement $`N`$* : un graphe à $`N`$ nœuds possède $`N`$ formes élémentaires, ni plus ni moins — le catalogue est fini et complet. *Base* : **toute** configuration $`u`$ s'écrit, de façon unique, comme superposition
-$$
+```math
 u = \sum_{j} a_j\, \varphi_j
-$$
+```
 des formes du catalogue — aucun état, si biscornu soit-il, n'échappe à la décomposition. *Orthonormée* : les formes sont mutuellement « perpendiculaires », chacune est aveugle aux autres, et le coefficient $`a_j`$ se lit par simple projection. Et nous savons même où vivent les valeurs propres : la positivité de $`L`$ (chapitre I, §5 : $`u^\top L u \ge 0`$) impose $`\lambda \ge 0`$, et nous connaissons déjà le bas du catalogue — $`L\mathbf 1 = 0`$ : la première forme élémentaire de tout univers est le champ constant, avec $`\lambda = 0`$.
 
 ## 4. Que fait chaque forme ? Elle sonne.
 
 Reste à résoudre la dynamique d'une amplitude : $`a(t+1) = (2 - c^2\lambda)\,a(t) - a(t-1)`$. C'est une récurrence à coefficients constants ; cherchons des solutions oscillantes $`a(t) = \cos(\omega t + \phi)`$. L'identité $`\cos(\omega(t{+}1)) + \cos(\omega(t{-}1)) = 2\cos\omega\,\cos(\omega t)`$ montre que cela fonctionne exactement quand
-$$
+```math
 2\cos\omega = 2 - c^2\lambda, \qquad\text{c'est-à-dire}\qquad \sin^2\!\frac{\omega}{2} = \frac{c^2\lambda}{4}.
-$$
+```
 Chaque forme du catalogue, laissée à elle-même, **oscille sur place** — elle ne voyage pas, elle ne se déforme pas, elle *vibre*, à une fréquence $`\omega(\lambda)`$ dictée par sa valeur propre : les formes lisses (petit $`\lambda`$, faible rugosité) vibrent lentement, les formes hérissées (grand $`\lambda`$) vibrent vite. Un lecteur musicien a déjà tout compris : les vecteurs propres sont les **harmoniques** de l'univers, et $`\omega(\lambda)`$ est la hauteur de chaque note. Une corde de guitare ne fait rien d'autre : ses modes propres sont la fondamentale et les harmoniques, chacun vibrant sur place à sa fréquence — et une corde pincée n'importe comment joue un *accord*, la superposition de ses modes. Notre univers est un instrument. Le graphe est sa lutherie : c'est la géométrie qui fixe le catalogue des notes.
 
 La formule contient deux dividendes, qu'il ne faut pas laisser filer.
@@ -66,9 +66,9 @@ La formule contient deux dividendes, qu'il ne faut pas laisser filer.
 ## 5. L'instrument le plus simple du monde
 
 Tout ceci mérite d'être *vu*. Prenons le plus petit instrument non trivial : trois nœuds en ligne, $`1 - 2 - 3`$. Son Laplacien a pour catalogue complet ($`N = 3`$ notes, comme promis) :
-$$
+```math
 \varphi_0 = (1,1,1),\ \lambda = 0 \qquad \varphi_1 = (1,0,-1),\ \lambda = 1 \qquad \varphi_2 = (1,-2,1),\ \lambda = 3.
-$$
+```
 (Vérification en une ligne pour $`\varphi_1`$ : le nœud central voit $`2\cdot 0 - 1 - (-1) = 0`$ ✓, le nœud $`1`$ voit $`1 - 0 = 1`$ ✓, le nœud $`3`$ voit $`-1 - 0 = -1`$ ✓ : $`L\varphi_1 = 1\cdot\varphi_1`$.) Les trois formes ont un sens limpide : le fond uniforme ; la *balançoire* (les extrémités en opposition, le centre immobile) ; le *pincement* (le centre contre les bords). Ce sont les trois seules façons d'exister sur ce graphe sans se défigurer.
 
 Faisons-les sonner, avec $`c = 1`$, lâchées au repos. La balançoire obéit à $`a(t+1) = a(t) - a(t-1)`$, dont on vérifie à la main la merveille : $`1, 1, 0, -1, -1, 0, 1, 1, \dots`$ — **période 6, exactement**. Le pincement obéit à $`a(t+1) = -a(t) - a(t-1)`$ : $`1, 1, -2, 1, 1, -2, \dots`$ — **période 3, exactement**. (Simulation faite : les profils restent $`(1,0,-1)`$ et $`(1,-2,1)`$ au facteur près, à la précision machine, pour toujours.) Deux notes parfaitement périodiques, la plus rugueuse vibrant deux fois plus vite que la plus lisse, conformément à $`\omega(\lambda)`$. Et n'importe quel état initial de cet univers à trois nœuds — *n'importe lequel* — est un accord de ces trois notes, chacune évoluant dans son coin comme si les autres n'existaient pas.
