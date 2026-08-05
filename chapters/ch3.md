@@ -1,0 +1,137 @@
+# Chapitre III — Pourquoi faut-il une mémoire ?
+
+> **Question.** Que devient la dynamique si chaque point se souvient d'un instant de plus ?
+>
+> *Nous cherchons une règle. Nous allons découvrir qu'il n'y en a qu'une.*
+
+## 1. Le cahier des charges
+
+Le chapitre II s'est conclu sur un diagnostic précis : l'état du monde doit contenir **deux instants**, $u(t)$ et $u(t-1)$, faute de quoi aucune direction ne peut être mémorisée. La nouvelle règle aura donc la forme
+$$
+u(t+1) \;=\; F\bigl(u(t),\, u(t-1)\bigr).
+$$
+Mais laquelle ? Il y a *a priori* une infinité de fonctions $F$. Plutôt que d'en essayer une au hasard, dressons le cahier des charges complet — chaque exigence nous est déjà familière, sauf la dernière, qui est nouvelle et va tout verrouiller.
+
+**(a) Localité.** Un point ne consulte que lui-même et ses voisins. D'après le chapitre I, toute dépendance spatiale passe donc par $u_v$ et $(Lu)_v$.
+
+**(b) Linéarité.** *(Parcimonie, comme toujours : on ne complexifie que forcé.)*
+
+**(c) Homogénéité.** Mêmes coefficients partout, et pour tous les temps : la loi ne dépend ni du lieu, ni de la date.
+
+**(d) Un champ constant est inerte.** Un univers plat doit rester plat.
+
+**(e) Réversibilité.** Voici la nouveauté. Nous exigeons que notre univers **ne perde pas d'information** : connaissant deux instants consécutifs, on doit pouvoir reconstituer le passé aussi bien que prédire le futur. Autrement dit, la loi doit pouvoir se lire dans les deux sens du temps.
+
+Pourquoi imposer (e) ? D'abord par parcimonie encore : une loi irréversible *détruit* de l'information, et il faudrait expliquer où elle va — c'est une structure de plus, pas de moins. Ensuite parce que nous venons précisément de voir, au chapitre II, le visage d'un monde qui oublie : tout s'y dissout. La diffusion est irréversible (un brouillard uniforme ne « sait » plus de quelle bosse il provient), et c'est *exactement* le comportement dont nous cherchons à nous débarrasser. L'amnésie et l'étalement ne sont pas deux défauts, mais un seul.
+
+## 2. La règle est forcée
+
+Écrivons la forme la plus générale compatible avec (a)–(c) :
+$$
+u(t+1) \;=\; \alpha\, u(t) \;+\; \beta\, u(t-1) \;-\; \gamma\, L\,u(t) \;-\; \delta\, L\,u(t-1),
+$$
+avec quatre coefficients libres $\alpha, \beta, \gamma, \delta$. Faisons parler les deux dernières exigences.
+
+**Le champ constant (d).** Pour $u \equiv c$, les termes en $L$ s'annulent (chapitre I : $L\mathbf 1 = 0$), et il reste $c = \alpha c + \beta c$, d'où
+$$
+\alpha + \beta = 1 .
+$$
+
+**La réversibilité (e).** Demandons que la loi, relue à rebours, soit *la même loi*. Renverser le temps, c'est échanger les rôles de $u(t+1)$ et $u(t-1)$. Réécrivons donc l'équation en isolant $u(t-1)$ :
+$$
+u(t-1) \;=\; -\frac{\alpha}{\beta}\,u(t) \;+\; \frac{1}{\beta}\,u(t+1) \;+\; \frac{\gamma}{\beta}\,L\,u(t) \;+\; \frac{\delta}{\beta}\,L\,u(t+1).
+$$
+Pour que cette lecture rétrograde ait la même forme que la lecture directe, il faut identifier les coefficients terme à terme : $\;1/\beta = \beta$, $\;-\alpha/\beta = \alpha$, $\;\gamma/\beta = -\gamma$, $\;\delta/\beta = -\delta$ avec le $L u(t\pm1)$ au bon poste. La seule solution non triviale est
+$$
+\beta = -1, \qquad \delta = 0,
+$$
+et donc, par (d), $\alpha = 2$. Il ne reste qu'un seul paramètre libre, le coefficient $\gamma$, que nous baptisons $c^2$ (le carré, dont le sens s'éclaircira, garantit le bon signe : le Laplacien doit *rappeler* les pics vers le bas, pas les amplifier). La règle est là :
+$$
+\boxed{\;u(t+1) \;=\; 2\,u(t) \;-\; u(t-1) \;-\; c^2\, L\,u(t).\;}
+$$
+
+Prenons le temps de mesurer ce qui vient de se passer. Nous ne l'avons pas *choisie* : localité, linéarité, homogénéité, inertie du champ plat et réversibilité ne laissaient **rien d'autre**. Le $2$ et le $-1$ ne sont pas des réglages : le $-1$ est la signature de la symétrie passé/futur, et le $2$ est son ombre portée par le champ constant. Quant au $\delta = 0$, il dit une chose élégante : la réversibilité interdit au Laplacien de s'appliquer ailleurs qu'à l'instant *présent* — le seul instant qui joue un rôle symétrique entre hier et demain.
+
+**Vérification de (e), pour le plaisir.** De la règle on tire $u(t-1) = 2u(t) - u(t+1) - c^2 L u(t)$ : c'est *exactement la même formule*, lue dans l'autre sens. Notre univers est une horloge qui tourne aussi bien à l'envers. Rien ne s'y perd. (Le lecteur qui a fait de la mécanique reconnaîtra une différence seconde : $u(t+1) - 2u(t) + u(t-1)$ est l'accélération discrète, et notre règle s'écrit $\ddot u = -c^2 L u$. Nous venons d'écrire, sans le savoir, une loi de Newton — et, comme nous le verrons, une équation d'onde.)
+
+## 3. L'expérience décisive
+
+Assez d'algèbre : lançons une bosse. Plaçons-nous sur la chaîne avec $c = 1$ ; la règle devient adorablement simple. Puisque $(Lu)_n = 2u_n - u_{n-1} - u_{n+1}$ :
+$$
+u_n(t+1) \;=\; u_{n-1}(t) \;+\; u_{n+1}(t) \;-\; u_n(t-1).
+$$
+
+> « Chaque point somme ses voisins d'aujourd'hui, et soustrait son propre hier. »
+
+Il nous faut maintenant une condition initiale — et c'est ici que la mémoire prend tout son sens. L'état, c'est *deux* photographies. Donnons au système la bosse $(1,2,1)$ centrée en $0$ à l'instant $t=0$, et **la même bosse, décalée d'un cran vers la gauche**, à l'instant $t=-1$ :
+$$
+\begin{array}{r|ccccccc}
+n & -3 & -2 & -1 & 0 & 1 & 2 & 3\\ \hline
+u_n(-1) & 0 & 1 & 2 & 1 & 0 & 0 & 0\\
+u_n(0) & 0 & 0 & 1 & 2 & 1 & 0 & 0
+\end{array}
+$$
+Ce décalage entre les deux souvenirs, c'est notre déclaration d'intention : « hier, l'objet était un cran plus à gauche ». Aucun vecteur, aucune coordonnée — une pure différence entre deux images. *C'est cela, une vitesse, dans un monde qui n'a que des voisins.*
+
+Calculons $t = 1$, nœud par nœud :
+$$
+\begin{aligned}
+u_{-2}(1) &= u_{-3}(0) + u_{-1}(0) - u_{-2}(-1) = 0 + 1 - 1 = \mathbf{0}\\
+u_{-1}(1) &= u_{-2}(0) + u_{0}(0) - u_{-1}(-1) = 0 + 2 - 2 = \mathbf{0}\\
+u_{0}(1) &= u_{-1}(0) + u_{1}(0) - u_{0}(-1) = 1 + 1 - 1 = \mathbf{1}\\
+u_{1}(1) &= u_{0}(0) + u_{2}(0) - u_{1}(-1) = 2 + 0 - 0 = \mathbf{2}\\
+u_{2}(1) &= u_{1}(0) + u_{3}(0) - u_{2}(-1) = 1 + 0 - 0 = \mathbf{1}
+\end{aligned}
+$$
+Résultat :
+$$
+u(1) = (\dots,\ 0,\ 0,\ 0,\ 1,\ 2,\ 1,\ 0,\ \dots)
+$$
+La bosse $(1,2,1)$ est maintenant sur $(0,1,2)$. **Elle a avancé d'un cran vers la droite, sans se déformer.** Et le nouvel état — $u(1)$ décalé d'un cran par rapport à $u(0)$ — est la copie conforme de l'état initial, translaté : le pas suivant la fera avancer encore, et encore, indéfiniment. Personne ne pousse. Rien ne la guide. Elle continue, parce que rien ne l'arrête.
+
+Nous venons d'assister à la naissance de l'**inertie**.
+
+## 4. L'autopsie du miracle
+
+Ne laissons pas passer ce moment sans comprendre *où*, dans le calcul, la direction s'est jouée. Regardons les deux nœuds critiques.
+
+**À l'arrière ($n = -1$) :** les voisins apportent $0 + 2 = 2$… et le souvenir soustrait $2$. Annulation *exacte*. La moitié de l'onde qui voulait repartir vers la gauche est détruite par le terme $-u(t-1)$ — le passé de ce nœud, où la bosse se tenait, agit comme un contre-signal.
+
+**À l'avant ($n = 1$) :** les voisins apportent $2 + 0 = 2$, et le souvenir ne retranche rien ($u_1(-1) = 0$ : la bosse n'était pas encore passée par là). Tout le signal survit.
+
+Le mécanisme est donc une **interférence** : destructive vers l'arrière, libre vers l'avant. Le terme de mémoire ne stocke pas une flèche ; il stocke *l'empreinte du passage*, et cette empreinte suffit à casser la symétrie gauche/droite que la diffusion, elle, ne pouvait jamais briser. Voilà la réponse, au niveau du pas $t \to t+1$, à l'impossibilité du chapitre II : deux films différents ne passent plus par le même état, car l'état contient maintenant l'image précédente du film.
+
+On peut même le dire en théorème. Sur la chaîne avec $c=1$, prenons *n'importe quel* profil $f$ et posons $u_n(t) = f(n - t)$ — le profil qui glisse d'un cran par pas. Alors
+$$
+u_{n-1}(t) + u_{n+1}(t) - u_n(t-1) = f(n-1-t) + f(n+1-t) - f(n-t+1) = f(n-1-t) = u_n(t+1). \checkmark
+$$
+**Tout profil translaté uniformément est une solution exacte.** Le mouvement rectiligne uniforme n'est pas une solution approchée ou privilégiée de notre univers : c'est une solution *parfaite*. Un objet libre continue tout droit, à vitesse constante, pour l'éternité — nous venons de démontrer la première loi de Newton, dans un monde qui ne sait même pas ce qu'est une droite.
+
+> **Le déclic.** L'inertie n'est pas une propriété des objets. C'est une propriété de la *mémoire*. Un monde du premier ordre oublie et diffuse ; un monde du second ordre se souvient d'une image, et cette unique image suffit à entretenir le mouvement à jamais. « Masse point n'en faut » : il a suffi d'un souvenir.
+
+## 5. Deux honnêtetés avant de fêter ça
+
+**Première honnêteté : le rôle de $c$.** Le miracle du §3 utilise $c = 1$ sur la chaîne. Pour $c \neq 1$, ou pour un profil lancé « entre deux vitesses », la bosse avance *mais se déforme lentement* — un phénomène que nous disséquerons au chapitre VI (il porte un nom : la dispersion, et il est une signature profonde des mondes discrets). Retenons pour l'instant le résultat robuste : le **second ordre transporte**, là où le premier ordre étale. La qualité du transport, elle, dépendra de la géométrie — et c'est une richesse, pas un défaut.
+
+**Seconde honnêteté : le nom de l'équation.** Notre règle $\ddot u = -c^2 Lu$ est la version discrète de
+$$
+\partial_t^2 u = c^2\, \Delta u,
+$$
+qui est l'**équation d'onde** — celle des cordes vibrantes, des membranes, du son. Le lecteur est en droit de tiquer : nous voulions une *particule*, et l'équation que nos axiomes nous ont imposée est celle des *ondes* ? Ce n'est pas un accident de parcours, et nous ne le balayerons pas sous le tapis : c'est peut-être la leçon la plus profonde de tout le livre, et nous lui consacrerons un interlude entier le moment venu. Pour l'instant, une chose est sûre : notre bosse, onde ou pas, avance tout droit.
+
+## 6. Où nous en sommes
+
+Nous avons exigé une mémoire, et cinq contraintes — localité, linéarité, homogénéité, inertie du plat, réversibilité — ont forcé une règle unique : $u(t+1) = 2u(t) - u(t-1) - c^2 Lu(t)$. Lancée sur la chaîne, elle transporte une bosse sans la déformer, d'un cran par pas de temps, pour toujours ; et nous avons vu le mécanisme à l'œuvre, une interférence destructive vers l'arrière orchestrée par le terme de mémoire. La première loi de Newton est devenue un théorème.
+
+Mais un physicien qui découvre une dynamique ne demande pas d'abord « quels sont ses mouvements élégants ? ». Il demande :
+
+> **« Puis-je lui faire confiance ? »**
+
+Si je laisse tourner cette règle un million de pas, qu'est-ce qui me garantit qu'elle ne fabrique pas du mouvement à partir de rien — qu'une petite bosse ne va pas, quelque part, enfler sans cause jusqu'à dévorer l'univers ? La réversibilité y fait penser (rien ne se perd…), mais elle ne le *prouve* pas : il nous faudrait une quantité, calculable sur l'état, dont nous puissions démontrer qu'elle ne change **jamais**. Notre univers en possède-t-il une ?
+
+Nous ne savons même pas encore comment une telle chose pourrait s'écrire. Nous allons la chercher — et nous essuierons quelques échecs instructifs avant de la trouver.
+
+> **Chapitre suivant — IV. Comment savoir si notre univers triche ?**
+> *À la recherche de ce qui ne peut être ni créé, ni détruit.*
+
+---
