@@ -115,7 +115,27 @@ C'est notre exigence (c) devenue théorème : $`\mathbf 1`$ est vecteur propre d
 ```math
 (\mathcal{L}u)_n = (u_n - u_{n-1}) + (u_n - u_{n+1}) = -\bigl(u_{n+1} - 2u_n + u_{n-1}\bigr) = 0 .
 ```
-Une rampe régulière est « invisible » pour le Laplacien : ce qu'il détecte, ce n'est pas la pente, mais la **courbure** — le défaut de linéarité. On reconnaît d'ailleurs, au signe près, la différence seconde discrète $`u_{n+1} - 2u_n + u_{n-1}`$, l'analogue exact de $`-\,\partial_x^2`$. C'est pourquoi $`L`$ est le cousin discret de $`-\Delta`$, l'opposé du Laplacien continu.
+Une rampe régulière est « invisible » pour le Laplacien : ce qu'il détecte, ce n'est pas la pente, mais la **courbure** — le défaut de linéarité.
+
+Voyons rapidement le lien avec la dérivée seconde. Plaçons les sommets aux points $`x_n=nh`$ uniquement pour effectuer la comparaison, et posons $`u_n=f(x_n)`$. Les développements de Taylor donnent
+
+```math
+f(x_n\pm h)=f(x_n)\pm h f'(x_n)+\frac{h^2}{2}f''(x_n)\pm\frac{h^3}{6}f'''(x_n)+O(h^4).
+```
+
+En additionnant les deux formules, les termes impairs s'annulent :
+
+```math
+\frac{u_{n+1}-2u_n+u_{n-1}}{h^2}=f''(x_n)+O(h^2).
+```
+
+Or notre convention donne $`(Lu)_n=2u_n-u_{n-1}-u_{n+1}`$. Ainsi
+
+```math
+\frac{(Lu)_n}{h^2}=-f''(x_n)+O(h^2).
+```
+
+Le Laplacien de la chaîne, divisé par $`h^2`$, approche donc $`-\partial_x^2`$ quand la maille devient fine. Pour un polynôme de degré au plus deux, le reste disparaît : avec $`u_n=n^2`$, on trouve exactement $`(Lu)_n=-2`$. C'est en ce sens précis que $`L`$ est le cousin discret de $`-\Delta`$, l'opposé du Laplacien continu.
 
 ## 5. Deux propriétés qui serviront partout
 
