@@ -65,7 +65,11 @@ Le coefficient diagonal n'a pas été choisi : une fois le couplage des arêtes 
       =\sum_{w\sim v}(u_v-u_w).}
 ```
 
-C'est le **Laplacien combinatoire** du graphe. Sous les quatre hypothèses que nous venons d'énoncer, il est unique à un facteur multiplicatif près. Sans l'hypothèse (c), d'autres opérateurs restent possibles. Le Laplacien normalisé $`I-D^{-1}A`$, par exemple, mesure directement l'écart à la moyenne des voisins. Nous choisissons $`D-A`$ parce qu'il attribue la même raideur à chaque arête et parce qu'il est symétrique sur un graphe non orienté — deux propriétés qui deviendront essentielles.
+C'est le **Laplacien combinatoire** du graphe. Sous les quatre hypothèses que nous venons d'énoncer, il est unique à un facteur multiplicatif près. Sans l'hypothèse (c), d'autres opérateurs restent possibles.
+
+Le Laplacien normalisé $`I-D^{-1}A`$, par exemple, mesure directement l'écart à la moyenne des voisins. Au sommet $`v`$, chaque arête incidente porte alors le poids $`1/\deg(v)`$. Sur une étoile à trois branches, l'écart le long d'une même arête est donc compté avec le poids $`1/3`$ lorsqu'il est vu depuis le centre, mais avec le poids $`1`$ lorsqu'il est vu depuis la feuille. Les voisins d'un même sommet restent équivalents, mais une arête n'a plus un couplage universel indépendant de son extrémité.
+
+La version symétrique normalisée $`I-D^{-1/2}AD^{-1/2}`$ rétablit la symétrie matricielle, au prix d'un poids $`1/\sqrt{\deg(v)\deg(w)}`$ dépendant des deux extrémités de chaque arête. Nous choisissons $`D-A`$ parce qu'une différence $`u_v-u_w`$ y agit avec la même raideur sur toute arête et avec des contributions opposées aux deux extrémités — une propriété qui deviendra essentielle pour l'énergie.
 
 Sous forme matricielle,
 
