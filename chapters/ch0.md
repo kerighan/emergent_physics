@@ -12,7 +12,9 @@ Il ne reste qu'une immense collection de points, reliés entre eux. Et chaque po
 
 > **« Quels sont mes voisins ? »**
 
-C'est tout. Aucun point ne connaît sa position, car il n'y a pas de position. Aucun ne connaît sa distance à un autre, car il n'y a pas de distance. Il n'y a que ce tissu de relations : *qui touche qui*.
+C'est tout. Aucun point ne connaît sa position, car aucune position ne lui a été donnée. Aucune longueur n'est attachée aux arêtes ; aucun angle ne permet de dire que deux chemins tournent de la même façon. Il n'y a d'abord que ce tissu de relations : *qui touche qui*.
+
+Le mot **d'abord** est important. À partir des seules connexions, on pourra déjà compter le nombre minimal d'arêtes entre deux sommets : une première notion de distance émergera ainsi. Mais elle sera *construite à partir du graphe*, et non importée d'un espace extérieur. C'est toute la méthode du livre en miniature : ne rien interdire à l'émergence, mais ne rien supposer avant de l'avoir fabriqué.
 
 À première vue, la situation paraît désespérée. Comment parler de mouvement lorsqu'il n'existe plus de direction ? Comment définir une vitesse lorsqu'il n'existe plus de distance ? Comment parler d'une force lorsqu'il n'existe plus de trajectoire ? Toute la physique semble s'être évaporée avec la géométrie.
 
@@ -28,9 +30,9 @@ Nous ferons exactement l'inverse.
 
 Nous partirons d'un monde où **aucun** de ces concepts n'existe. À chaque étape, nous nous heurterons à une difficulté concrète. Nous chercherons alors la structure mathématique **la plus simple** capable de la résoudre. Si elle fonctionne, nous continuons ; sinon, nous l'abandonnons et nous comprenons pourquoi.
 
-La règle est stricte : nous ne chercherons jamais à retrouver un concept familier *parce que nous savons qu'il existe*. Nous chercherons seulement à résoudre le problème qui se pose. Si, chemin faisant, apparaissent une inertie, une énergie, une masse, ou même des particules, ce sera parce que notre univers en aura **eu besoin** — et non parce que nous les aurons glissées d'avance dans les hypothèses.
+La règle est stricte : nous ne chercherons jamais à retrouver un concept familier *seulement parce que nous savons qu'il existe*. Nous chercherons d'abord à résoudre le problème qui se pose. Si, chemin faisant, apparaissent une inertie, une énergie, une masse, ou même des particules, nous devrons pouvoir montrer précisément quelles hypothèses les ont rendues possibles — et lesquelles auraient permis autre chose.
 
-C'est une contrainte inconfortable. C'est aussi ce qui rendra chaque découverte convaincante : quand un concept surgira, il sera *forcé*, pas invité.
+C'est une contrainte inconfortable. C'est aussi ce qui rendra chaque découverte convaincante : quand un concept surgira, nous saurons s'il est réellement *forcé*, seulement naturel, ou choisi parmi plusieurs possibilités. Cette distinction fera partie du résultat.
 
 ## Les règles du jeu
 
@@ -38,9 +40,19 @@ Notre univers obéira à très peu de contraintes, mais elles seront intransigea
 
 **Localité.** Un point n'interagit qu'avec ses voisins. Aucune information ne peut apparaître spontanément à distance ; toute influence doit se propager de proche en proche.
 
-**Homogénéité.** Les mêmes lois s'appliquent partout. Aucun point n'est privilégié : la règle qui gouverne un point doit être la même que celle qui gouverne tous les autres.
+**Homogénéité de la loi.** Les mêmes recettes s'appliquent partout. Cela ne signifie pas que tous les sommets se ressemblent : l'un peut avoir deux voisins et l'autre cinq. Cela signifie que la règle ne contient pas une liste secrète de sommets privilégiés. Si deux points disposent des mêmes informations locales, la loi les traite de la même manière.
 
-**Parcimonie.** À chaque bifurcation, lorsque plusieurs constructions sont possibles, nous retenons la plus pauvre — celle qui suppose le moins. Ce n'est pas un principe esthétique : c'est ce qui garantit que ce que nous obtiendrons aura vraiment été *imposé*, et non choisi en douce.
+**Parcimonie.** À chaque bifurcation, lorsque plusieurs constructions sont possibles, nous commençons par la plus pauvre — celle qui suppose le moins. La parcimonie n'est pas une preuve d'unicité : elle fixe un ordre d'exploration. Nous devrons toujours annoncer les autres portes que nous fermons.
+
+## Comment lire les affirmations du livre
+
+Trois statuts reviendront souvent.
+
+- Une **définition** fixe le sens d'un mot dans notre modèle : par exemple, ce que nous accepterons d'appeler un « objet ».
+- Un **théorème** découle des hypothèses annoncées et peut être vérifié ligne par ligne.
+- Une **interprétation physique** rapproche un résultat du vocabulaire de la mécanique. Elle peut être éclairante sans être une identité avec notre Univers.
+
+Le lecteur est invité à demander, à chaque apparition d'un mot familier : *qu'avons-nous démontré exactement ?* Cette question n'interrompt pas le voyage ; elle en est le moteur.
 
 ## Ce que nous ne savons pas encore faire
 

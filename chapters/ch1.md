@@ -2,7 +2,7 @@
 
 > **Question.** Que peut calculer un point qui ne connaît que ses voisins ?
 
-Avant de parler de mouvement, d'objet ou de temps, il faut répondre à une question beaucoup plus élémentaire, presque triviale en apparence — et pourtant elle va, à elle seule, imposer tout l'appareil mathématique du livre.
+Avant de parler de mouvement, d'objet ou de temps, il faut répondre à une question plus élémentaire : quelle opération spatiale allons-nous autoriser ? La réponse ne sera pas « tout ce qu'un nœud peut imaginer », mais l'opération la plus simple compatible avec nos règles. Elle fournira l'appareil mathématique du livre.
 
 ## 1. Un chiffre sur chaque point
 
@@ -18,49 +18,82 @@ Nous voudrions maintenant faire *évoluer* ce champ. Mais avant d'introduire le 
 
 ## 2. Comparer, faute de mieux
 
-Que faire de $`u_v`$ et des $`u_w`$ ? Le seul geste raisonnable est de **comparer** le point à son entourage :
+Que faire de $`u_v`$ et des $`u_w`$ ? Le premier geste raisonnable est de **comparer** le point à son entourage :
 
 > « Suis-je plus grand, ou plus petit, que ce qui m'entoure ? »
 
 Cette intuition a une conséquence immédiate, presque une évidence physique : **si un point vaut exactement la moyenne de ses voisins, rien ne le distingue de son entourage, et il n'a aucune raison de changer.** Un champ parfaitement plat doit être inerte. À l'inverse, un point qui dépasse nettement ses voisins — un pic — est dans une situation « tendue » : on s'attend à ce qu'il évolue davantage.
 
-Ce que nous cherchons, c'est donc une mesure de l'**écart à la moyenne locale**. Formalisons cette intuition, puis montrons qu'elle ne laisse presque aucune liberté.
+Ce que nous cherchons, c'est donc une mesure de l'**écart à l'entourage local**. Sur une chaîne $`A-B-C`$, si le champ vaut $`u=(1,3,2)`$, le sommet $`B`$ dépasse la moyenne de ses voisins, qui vaut $`(1+2)/2=1{,}5`$. Une opération de nivellement doit donc produire en $`B`$ un nombre positif, dont le signe indiquera « trop haut ». Formalisons cette intuition, puis comptons exactement la liberté restante.
 
-## 3. La contrainte force la formule
+## 3. Les hypothèses qui conduisent à la formule
 
-Cherchons la forme la plus générale d'un calcul local $` (\mathcal{L}u)_v `$ que le point $`v`$ puisse produire, en imposant trois exigences — chacune est une traduction directe des règles du jeu.
+Partons de la forme la plus générale d'un calcul **linéaire** utilisant seulement le sommet $`v`$ et ses voisins :
 
-**(a) Linéarité.** *(Parcimonie.)* C'est l'hypothèse la plus pauvre : nous supposons que doubler le champ double le résultat, et que le résultat d'une somme est la somme des résultats. Nous verrons plus tard que la non-linéarité ouvre des possibilités fascinantes (chapitre X) ; mais on ne l'introduit que lorsqu'on y est forcé. Sous cette hypothèse, le calcul est nécessairement une combinaison linéaire des valeurs disponibles :
 ```math
-(\mathcal{L}u)_v \;=\; a_v\, u_v \;+\; \sum_{w \sim v} b_{vw}\, u_w .
+(\mathcal Lu)_v=a_vu_v+\sum_{w\sim v}b_{vw}u_w.
 ```
 
-**(b) Absence de voisin privilégié.** *(Homogénéité/isotropie locale.)* Rien, dans le graphe nu, ne distingue un voisin d'un autre : il n'y a pas de « voisin de droite ». Tous les voisins doivent donc entrer avec le **même poids** $`b_{vw} = b`$. D'où
+Cette écriture contient encore beaucoup de choix. Nous allons les retirer un par un.
+
+**(a) Linéarité.** Doubler toutes les valeurs double le résultat ; additionner deux champs additionne leurs résultats. C'est une hypothèse, pas une conséquence de la localité. Nous la choisissons parce qu'elle est la première à essayer et qu'elle permet de comprendre exactement ce qui se passe. La non-linéarité reviendra au chapitre X.
+
+**(b) Aucun voisin n'est distingué au même sommet.** Le nœud $`v`$ ne possède ni boussole ni étiquette « voisin de gauche ». Ses voisins entrent donc avec un même coefficient, que nous pouvons d'abord noter $`b_v`$ :
+
 ```math
-(\mathcal{L}u)_v \;=\; a_v\, u_v \;+\; b \sum_{w \sim v} u_w .
+(\mathcal Lu)_v=a_vu_v+b_v\sum_{w\sim v}u_w.
 ```
 
-**(c) Un champ constant ne fait rien.** *(Pas de référence absolue.)* Nous l'avons exigé au §2 : si $`u_w = c`$ pour tout point, aucun point ne se distingue, et le calcul doit rendre $`0`$. En injectant $`u \equiv c`$ :
+**(c) Même couplage sur chaque arête.** Nous faisons maintenant un choix supplémentaire : une différence de valeur agit avec la même intensité sur toutes les arêtes. Ainsi $`b_v`$ ne dépend plus du sommet ; nous l'écrivons $`b`$. C'est cette hypothèse de **couplage universel** qui écarte, par exemple, la moyenne normalisée où un sommet partage une influence totale entre ses voisins.
+
+**(d) Un champ constant ne produit aucun signal.** Si $`u_w=c`$ partout, alors
+
 ```math
-0 \;=\; a_v\, c \;+\; b\, \deg(v)\, c \qquad \text{pour tout } c,
-```
-où $`\deg(v)`$ est le nombre de voisins de $`v`$. Cela force
-```math
-a_v \;=\; -\,b\,\deg(v).
+0=a_vc+b\,\deg(v)c \qquad \text{pour tout }c.
 ```
 
-Voilà le point remarquable. Nous n'avions rien décidé sur le coefficient diagonal $`a_v`$ ; c'est l'exigence « un champ plat est inerte » qui l'a **calculé pour nous**, et qui l'a rendu égal au degré du point. En choisissant la normalisation $`b = -1`$ (un simple choix d'échelle et de signe), on obtient
+Il faut donc
+
 ```math
-\boxed{\;(\mathcal{L}u)_v \;=\; \deg(v)\,u_v \;-\; \sum_{w \sim v} u_w \;=\; \sum_{w \sim v} \bigl(u_v - u_w\bigr).\;}
+a_v=-b\,\deg(v).
 ```
 
-Ce n'est pas *un* opérateur parmi d'autres. C'est, à une échelle près, **le seul** calcul local, homogène, linéaire et aveugle aux constantes qu'un point puisse effectuer. Les mathématiciens l'appellent le **Laplacien du graphe**, et l'écrivent sous forme matricielle
-```math
-L \;=\; D - A,
-```
-où $`A`$ est la matrice d'adjacence ($`A_{vw} = 1`$ si $`v \sim w`$, sinon $`0`$) et $`D`$ la matrice diagonale des degrés. La formule locale $`(\mathcal{L}u)_v = \sum_{w\sim v}(u_v - u_w)`$ et l'écriture globale $`Lu = (D-A)u`$ sont une seule et même chose.
+Le coefficient diagonal n'a pas été choisi : une fois le couplage des arêtes fixé, l'annulation des constantes le détermine. En prenant $`b=-1`$ — choix d'échelle et de signe — on obtient
 
-> **Le déclic.** Le terme diagonal $`D`$ n'est pas un ingrédient ajouté à la main. Beaucoup de présentations sortent $`L = D - A`$ d'un chapeau. Ici, on voit que $`D`$ est *forcé* : c'est le prix exact à payer pour qu'un champ plat ne bouge pas. La matrice des degrés est la trace, dans l'algèbre, d'une exigence purement physique.
+```math
+\boxed{(\mathcal Lu)_v=\deg(v)u_v-\sum_{w\sim v}u_w
+      =\sum_{w\sim v}(u_v-u_w).}
+```
+
+C'est le **Laplacien combinatoire** du graphe. Sous les quatre hypothèses que nous venons d'énoncer, il est unique à un facteur multiplicatif près. Sans l'hypothèse (c), d'autres opérateurs restent possibles. Le Laplacien normalisé $`I-D^{-1}A`$, par exemple, mesure directement l'écart à la moyenne des voisins. Nous choisissons $`D-A`$ parce qu'il attribue la même raideur à chaque arête et parce qu'il est symétrique sur un graphe non orienté — deux propriétés qui deviendront essentielles.
+
+Sous forme matricielle,
+
+```math
+L=D-A,
+```
+
+où $`A`$ est la matrice d'adjacence et $`D`$ la matrice diagonale des degrés.
+
+### Un calcul complet sur trois sommets
+
+Pour la chaîne $`A-B-C`$,
+
+```math
+A=\begin{pmatrix}0&1&0\\1&0&1\\0&1&0\end{pmatrix},\qquad
+D=\begin{pmatrix}1&0&0\\0&2&0\\0&0&1\end{pmatrix},\qquad
+L=\begin{pmatrix}1&-1&0\\-1&2&-1\\0&-1&1\end{pmatrix}.
+```
+
+Avec $`u=(1,3,2)^T`$,
+
+```math
+Lu=\begin{pmatrix}-2\\3\\-1\end{pmatrix}.
+```
+
+Au centre, le résultat $`3=(3-1)+(3-2)`$ additionne exactement les deux écarts aux voisins. Aux extrémités, il n'y a qu'un écart. On peut également vérifier que les composantes de $`Lu`$ se somment à zéro : ce qui est compté positivement d'un côté d'une arête est compté négativement de l'autre.
+
+> **Le déclic.** Le terme $`D`$ n'est pas sorti d'un chapeau. Il est le prix exact à payer pour que les champs constants soient annulés lorsque chaque arête porte le même couplage.
 
 ## 4. Ce que le Laplacien voit
 
@@ -95,7 +128,7 @@ u^\top L\, u \;=\; \sum_{v} u_v \sum_{w\sim v}(u_v - u_w)
 
 ## 6. Où nous en sommes
 
-Nous étions partis d'un décor vide : des points, des voisins, rien d'autre. En exigeant seulement qu'un calcul local soit linéaire, aveugle à l'identité des voisins, et insensible aux champs plats, nous avons été **contraints** à un unique opérateur, le Laplacien $`L = D - A`$. Il ne connaît que l'adjacence : toute physique écrite avec lui sera automatiquement locale et sans coordonnées. C'est notre premier acquis solide, et il n'a rien coûté d'arbitraire.
+Nous étions partis de points reliés et d'un nombre par point. En exigeant un calcul local et linéaire, aucun voisin distingué, un même couplage sur chaque arête et l'annulation des champs constants, nous avons obtenu le Laplacien $`L=D-A`$. L'opérateur n'est donc pas « le seul imaginable » : il est celui que force ce cahier des charges précis. Il ne connaît que l'adjacence, et toute dynamique construite directement avec lui sera locale et sans coordonnées imposées.
 
 Mais nous n'avons encore rien fait *bouger*. Le Laplacien est un instantané : il évalue un champ figé. Pour faire de la physique, il faut du mouvement. La tentation est irrésistible : essayons la chose la plus naïve du monde. Posons une jolie bosse sur quelques points, décrétons que chaque point se corrige un peu en direction de la moyenne de ses voisins, et regardons la bosse se déplacer.
 
