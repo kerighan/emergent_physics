@@ -6,6 +6,8 @@ L'ambition n'est pas de prétendre que l'Univers réel a nécessairement été c
 
 Notre principe de parcimonie peut se formuler comme un principe de moindre information : parmi les lois compatibles avec les contraintes explicites, ne pas introduire arbitrairement une direction, un sommet, une échelle ou une corrélation privilégiés. C'est en ce sens que nous parlerons parfois de **prior maximalement non informatif** ou de **MaxEnt**. Il s'agit d'un principe d'inférence, pas nécessairement d'entropie thermodynamique.
 
+Cette parcimonie s'applique aussi au domaine numérique. Nous ne supposerons pas d'emblée que la réalité fondamentale porte tout le continuum des nombres réels, encore moins des amplitudes complexes. Tant que des entiers, des fractions ou quelques extensions algébriques suffisent, aucun domaine plus vaste n'est requis. Les nombres réels pourront servir de cadre analytique commode pour le théorème spectral, les limites ou les fonctions trigonométriques ; les nombres complexes pourront condenser deux équations réelles en une seule. Dans les deux cas, nous distinguerons l'**outil de représentation** de l'**hypothèse ontologique**. Si un calcul peut être reformulé par des suites et des récurrences discrètes, cette possibilité devra être signalée.
+
 À chaque étape, nous distinguerons donc soigneusement :
 
 - ce qui découle effectivement des hypothèses ;
